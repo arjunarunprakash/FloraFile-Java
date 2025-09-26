@@ -11,9 +11,9 @@ This simple application is for anyone that enjoys leisurly walks around their ne
 **Why is this Project of Interest to you?**
 I think it'll teach me invaluable information on creating file and registar systems, which has countless applications. Though, if im being honest, I think its a fairly unique idea on a subject I have always been passionate about as a LFS student. It will be something with practical application but also something that I will enjoy trying to create.
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
-
-An example of text with **bold** and *italic* fonts.  
+## User Stories:
+- As a user, I want to be able to *add* plant life to my collection and *specify* the common name, species name, location, date, and observations. 
+- As a user, I want to be able to *view* a list of the common names of the plant life in my collection. 
+- As a user, I want to be able to *select* a plant in my collection and *view* the plant in detail. 
+- As a user, I want to be able to *delete* a plant entry from my collection
+- As a user, I want to be able to *view* the total number of entries in my collection  

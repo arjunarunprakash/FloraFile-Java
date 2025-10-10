@@ -50,7 +50,7 @@ public class UbcFloraFileApp {
      */
     public void newEntry() {
         System.out.println("Please enter the Common Name of the plant");
-        String name = userInput.nextLine();
+        String name = userInput.next();
         System.out.println("Please enter the date you found the plant (YYYYMMDD)");
         int date = userInput.nextInt();
         Plant entry = new Plant(name, date);
@@ -101,45 +101,75 @@ public class UbcFloraFileApp {
     public void selectEntry(int entry) {
         Plant plant = folder.get(entry);
         System.out.print("You have selected: " + plant.getCommonName());
-        System.out.print("What would you like to do?");
-        System.out.print("[1] Modify Common Name");
-        System.out.print("[2] Modify Species Name");
-        System.out.print("[3] Modify Location");
-        System.out.print("[4] Modify Observation");
-        System.out.print("[5] Delete Entry");
+        modificationMessage();
         int input = userInput.nextInt();
+        entryModifier (input, plant);
+
+    }
+    /*
+     * EFFECTS: Helper for modification System Print
+     */
+    public void modificationMessage() {
+        System.out.println(", what would you like to do?");
+        System.out.println("[1] Modify Common Name");
+        System.out.println("[2] Modify Species Name");
+        System.out.println("[3] Modify Location");
+        System.out.println("[4] Modify Observation");
+        System.out.println("[5] Delete Entry");
+    }
+
+    /*
+     * EFFECTS: helper for location system print
+     */
+    public void locationMessage() {
+        System.out.println("Please select your location using the number");
+        System.out.println("[1] Main Mall");
+        System.out.println("[2] University Blvd");
+        System.out.println("[3] West Mall");
+        System.out.println("[4] East Mall");
+    }
+
+    /*
+     * REQUIRES: valid positive integer and plant
+     * MODIFIES: plant
+     * EFFECTS: allows user to modify a specific Plant's
+     * SpeciesName, location, and observations within Folder;
+     */
+    public void entryModifier(int input, Plant plant) {
         switch (input) {
             case 1:
-                System.out.print("Please type the Common Name");
-                plant.setCommonName(userInput.nextLine());
-                System.out.print("Common Name has been Updated!");
+                System.out.println("Please type the Common Name");
+                userInput.nextLine();
+                String commonName = userInput.nextLine();
+                plant.setCommonName(commonName);
+                System.out.println("Common Name has been Updated!");
                 break;
             case 2:
-                System.out.print("Please type the species name");
-                plant.setSpeciesName(userInput.nextLine());
+                System.out.println("Please type the species name");
+                userInput.nextLine();
+                String speciesName = userInput.nextLine();
+                plant.setSpeciesName(speciesName);
                 System.out.print("Species Name has been Updated!");
                 break;
             case 3:
-                System.out.print("Please select your location using the number");
-                System.out.print("[1] Main Mall");
-                System.out.print("[2] University Blvd");
-                System.out.print("[3] West Mall");
-                System.out.print("[4] East Mall");
-                plant.setUbcLocation(userInput.nextInt());
-                System.out.print("Location has been Updated!");
+                locationMessage();
+                userInput.nextInt();
+                int ubcLocation = userInput.nextInt();
+                plant.setUbcLocation(ubcLocation);
+                System.out.println("Location has been Updated!");
                 break;
             case 4:
-                System.out.print("Please type your Observations");
-                plant.setObservations(userInput.nextLine());
-                System.out.print("Observations has been Updated!");
+                System.out.println("Please type your Observations");
+                userInput.nextLine();
+                String observations = userInput.nextLine();
+                plant.setObservations(observations);
+                System.out.println("Observations has been Updated!");
+                break;
             case 5:
-                deleteEntry(entry);
-                System.out.print("This entry has been deleted!");
-
-            default:
+                deleteEntry(plant.getPlantId());
+                System.out.println("This entry has been deleted!");
                 break;
         }
-
     }
 
     /*
@@ -160,6 +190,10 @@ public class UbcFloraFileApp {
         return folder.size();
     }
 
+    public void presentFolderSize(){
+        System.out.println ("Your folder has " + viewFolderSize() + " entries");
+    }
+
     /*
      * REQUIRES: valid choice from User
      * MODIFIES: this
@@ -174,7 +208,7 @@ public class UbcFloraFileApp {
                 viewFolder();
                 break;
             case 3:
-                viewFolderSize();
+                presentFolderSize();
                 break;
             case 4:
                 this.onlineApp = false;

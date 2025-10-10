@@ -11,7 +11,6 @@ public class TestPlant {
     @BeforeEach
     void runBefore() {
         testPlant = new Plant("Meadow Foxtail", 20251009);
-
     }
 
     @Test
@@ -20,7 +19,7 @@ public class TestPlant {
         assertEquals(20251009, testPlant.getDateAdded());
         assertEquals("No Details", testPlant.getSpeciesName());
         assertEquals("No Details", testPlant.getObservations());
-        assertEquals("No Details", testPlant.getUBCLocation());
+        assertEquals("No Details", testPlant.getUbcLocation());
         assertEquals(1, testPlant.getPlantId());
     }
 
@@ -37,17 +36,17 @@ public class TestPlant {
     }
 
     @Test
-    void testSetUBCLocation() {
-        testPlant.setUBCLocation(1);
-        assertEquals("Main Mall", testPlant.getUBCLocation());
-        testPlant.setUBCLocation(2);
-        assertEquals("University Blvd", testPlant.getUBCLocation());
-        testPlant.setUBCLocation(3);
-        assertEquals("West Mall", testPlant.getUBCLocation());
-        testPlant.setUBCLocation(4);
-        assertEquals("East Mall", testPlant.getUBCLocation());
-        testPlant.setUBCLocation(7);
-        assertEquals("No Details", testPlant.getUBCLocation());
+    void testSetUbcLocation() {
+        testPlant.setUbcLocation(1);
+        assertEquals("Main Mall", testPlant.getUbcLocation());
+        testPlant.setUbcLocation(2);
+        assertEquals("University Blvd", testPlant.getUbcLocation());
+        testPlant.setUbcLocation(3);
+        assertEquals("West Mall", testPlant.getUbcLocation());
+        testPlant.setUbcLocation(4);
+        assertEquals("East Mall", testPlant.getUbcLocation());
+        testPlant.setUbcLocation(7);
+        assertEquals("No Details", testPlant.getUbcLocation());
     }
 
     @Test

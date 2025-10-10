@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestPlant {
     private Plant testPlant;
-    
+
     @BeforeEach
     void runBefore() {
         testPlant = new Plant("Meadow Foxtail", 20251009);
@@ -18,9 +18,9 @@ public class TestPlant {
     void testPlantConstructor() {
         assertEquals("Meadow Foxtail", testPlant.getCommonName());
         assertEquals(20251009, testPlant.getDateAdded());
-        assertEquals("No details", testPlant.getSpeciesName());
-        assertEquals("No details", testPlant.getObservations());
-        assertEquals("No details", testPlant.getUBCLocation());
+        assertEquals("No Details", testPlant.getSpeciesName());
+        assertEquals("No Details", testPlant.getObservations());
+        assertEquals("No Details", testPlant.getUBCLocation());
         assertEquals(1, testPlant.getPlantId());
     }
 
@@ -38,8 +38,16 @@ public class TestPlant {
 
     @Test
     void testSetUBCLocation() {
-        testPlant.setUBCLocation(5);
-        assertEquals("Ponderosa", testPlant.getUBCLocation());
+        testPlant.setUBCLocation(1);
+        assertEquals("Main Mall", testPlant.getUBCLocation());
+        testPlant.setUBCLocation(2);
+        assertEquals("University Blvd", testPlant.getUBCLocation());
+        testPlant.setUBCLocation(3);
+        assertEquals("West Mall", testPlant.getUBCLocation());
+        testPlant.setUBCLocation(4);
+        assertEquals("East Mall", testPlant.getUBCLocation());
+        testPlant.setUBCLocation(7);
+        assertEquals("No Details", testPlant.getUBCLocation());
     }
 
     @Test

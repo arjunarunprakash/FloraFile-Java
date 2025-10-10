@@ -7,7 +7,8 @@ public class Plant {
     private String ubcLocation;     // Location of plant on UBC
     private int dateAdded;          // Listed date found - YYYYMMDD format
     private String observation;     // Observations
-    private static int plantID = 0; //track id of next plant
+    private static int nextPlantId = 0; //track id of next plant
+    private int plantId;
 
    /*
     * REQUIRES: name that has a non-zero length
@@ -17,6 +18,13 @@ public class Plant {
     * speciesName, ubcLocation, and observations are set to default values
     */
     public Plant(String name, int date) {
+        this.commonName = name;
+        this.dateAdded = date;
+        String noDetail = "No Details";
+        this.speciesName = noDetail;
+        this.ubcLocation = noDetail;
+        this.observation = noDetail;
+        this.plantId = nextPlantId++;
 
     }
 
@@ -41,7 +49,7 @@ public class Plant {
     }
 
     public int getPlantId() {
-        return plantID;
+        return plantId;
     }
 
    /*
@@ -50,7 +58,7 @@ public class Plant {
      * EFFECTS: common name of the plant in this entry
      */ 
     public String setCommonName(String name) {
-
+        return this.commonName = name;
     }
 
     /*
@@ -58,8 +66,8 @@ public class Plant {
      * MODIFIES: this
      * EFFECTS: species name of the plant in this entry
      */ 
-    public String setSpeciesName(String name) {
-
+    public void setSpeciesName(String name) {
+       this.speciesName = name;
     }
 
     /*
@@ -67,7 +75,29 @@ public class Plant {
      * MODIFIES: this
      * EFFECTS: ubcLocation of the plant in this entry
      */ 
-    public String setUBCLocation(int number) {
+    public void setUBCLocation(int number) {
+        switch (number) {
+            case 1:
+                this.ubcLocation = "Main Mall";
+                break;
+
+            case 2:
+                this.ubcLocation = "University Blvd";
+                break;
+
+            case 3:
+                this.ubcLocation = "West Mall";
+                break;
+
+            case 4:
+                this.ubcLocation = "East Mall";
+                break;
+
+        
+            default:
+                this.ubcLocation = "No Details";
+                break;
+        }
 
     }
 
@@ -77,6 +107,7 @@ public class Plant {
      * EFFECTS: common name of the plant in this entry
      */ 
     public String setObservations(String observations) {
+        return this.observation = observations;
 
     }
 }

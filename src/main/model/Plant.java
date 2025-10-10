@@ -7,11 +7,13 @@ public class Plant {
     private String ubcLocation;     // Location of plant on UBC
     private int dateAdded;          // Listed date found - YYYYMMDD format
     private String observation;     // Observations
+    private static int plantID = 0; //track id of next plant
 
    /*
     * REQUIRES: name that has a non-zero length
     *           and date entered in correct YYYYMMDD format
-    * EFFECTS: commonName is set to name; dateFound is set to date;
+    * EFFECTS: commonName is set to name; dateFound is set to date; plant id is
+    *          unique positive integer.
     * speciesName, ubcLocation, and observations are set to default values
     */
     public Plant(String name, int date) {
@@ -36,6 +38,10 @@ public class Plant {
 
     public String getObservations() {
         return observation;
+    }
+
+    public int getPlantId() {
+        return plantID;
     }
 
    /*

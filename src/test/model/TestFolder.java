@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 public class TestFolder {
 
     private Folder testFolder;
@@ -105,6 +107,9 @@ public class TestFolder {
         testFolder.addPlant(testPlant1);
         testFolder.addPlant(testPlant2);
         testFolder.addPlant(testPlant3);
+        assertEquals(1, testPlant1.getPlantId());
+        assertEquals(2, testPlant2.getPlantId());
+        assertEquals(3, testPlant3.getPlantId());
         testFolder.removeByPlantId(1);
         assertEquals(2, testFolder.folderSize());
         assertEquals(testPlant2, testFolder.getPlant(0));
@@ -123,5 +128,19 @@ public class TestFolder {
         assertEquals(1, testFolder.folderSize());
         assertEquals(testPlant3, testFolder.getPlant(0));
         assertEquals(testPlant3, testFolder.getPlantByPlantId(3));
+    }
+
+    @Test
+    void testGetFolder() {
+        ArrayList<Plant> testFolderField = new ArrayList<>();
+        testFolderField.add(testPlant3);
+        testFolder.addPlant(testPlant1);
+        testFolder.addPlant(testPlant2);
+        testFolder.addPlant(testPlant3);
+        testFolder.removeByPlantId(1);
+        testFolder.removeByPlantId(2);
+        assertEquals(1, testFolder.folderSize());
+        assertEquals(testFolderField, testFolder.getFolder());
+        
     }
 }

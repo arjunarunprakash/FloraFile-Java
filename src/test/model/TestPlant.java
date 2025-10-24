@@ -10,6 +10,7 @@ public class TestPlant {
 
     @BeforeEach
     void runBefore() {
+        Plant.resetPlantIDCount();
         testPlant = new Plant("Meadow Foxtail", 20251009);
     }
 

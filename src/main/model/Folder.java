@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Folder {
 
-    public List<Plant> folder;
+    private List<Plant> folder;
 
     public Folder() {
         this.folder = new ArrayList<Plant>();
@@ -36,8 +36,15 @@ public class Folder {
      * MODIFIES: this
      * EFFECTS: removes plant based on plant id
      */
-    public void removeByPlantId(int i) {
-        
+    public void removeByPlantId(int id) {
+        Plant suspect = null;
+        for (Plant p: this.folder) {
+            if (p.getPlantId() == id) {
+                suspect = p;
+            } 
+            
+        }
+        this.folder.remove(suspect);
     }
 
     /*
@@ -105,5 +112,15 @@ public class Folder {
         return null;
 
     }
+
+    /*
+     * EFFECTS: returns folder field
+     */
+    public List<Plant> getFolder() {
+        return this.folder;
+        }
+        
+
+    
 
 }

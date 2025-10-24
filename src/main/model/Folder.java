@@ -58,19 +58,29 @@ public class Folder {
     /*
      * REQUIRES: a non-empty list
      * MODIFIES: folder
-     * EFFECTS: sort list by date
+     * EFFECTS: sort list by date descending order
      */
     public void sortListByDateAdded() {
+        Collections.sort(this.folder, new Comparator<Plant>() {
+            public int compare(Plant p1, Plant p2) {
+                return Integer.valueOf(p2.getDateAdded()).compareTo(p1.getDateAdded());
+            }
+        });
 
     }
 
     /*
      * REQUIRES: a non-empty folder
      * MODIFIES: folder
-     * EFFECTS: sort list by plantId
+     * EFFECTS: sort list by plantId ascending order
      */
     public void sortListByPlantId() {
-        
-        }
+        Collections.sort(this.folder, new Comparator<Plant>() {
+            public int compare(Plant p1, Plant p2) {
+                return Integer.valueOf(p1.getPlantId()).compareTo(p2.getPlantId());
+            }
+            });
+
+    }
 
 }

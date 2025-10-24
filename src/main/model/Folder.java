@@ -25,10 +25,19 @@ public class Folder {
     /*
      * REQUIRES: a valid plant
      * MODIFIES: this
-     * EFFECTS: removes plant to the folder
+     * EFFECTS: removes plant to the folder based on index pos
      */
     public void removePlant(int i) {
         folder.remove(i);
+    }
+
+    /*
+     * REQUIRES: a valid plant
+     * MODIFIES: this
+     * EFFECTS: removes plant based on plant id
+     */
+    public void removeByPlantId(int i) {
+        
     }
 
     /*

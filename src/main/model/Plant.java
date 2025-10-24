@@ -7,8 +7,9 @@ public class Plant {
     private String ubcLocation; // Location of plant on UBC
     private int dateAdded; // Listed date found - YYYYMMDD format
     private String observation; // Observations
-    private static int nextPlantId = 0; // track id of next plant
+    private static int nextPlantId = 0;
     private int plantId;
+    private String noDetail = "No Details";
 
     /*
      * REQUIRES: name that has a non-zero length
@@ -20,11 +21,11 @@ public class Plant {
     public Plant(String name, int date) {
         this.commonName = name;
         this.dateAdded = date;
-        String noDetail = "No Details";
         this.speciesName = noDetail;
         this.ubcLocation = noDetail;
         this.observation = noDetail;
-        this.plantId = nextPlantId++;
+        nextPlantId++;
+        this.plantId = nextPlantId;
 
     }
 
@@ -108,5 +109,9 @@ public class Plant {
     public String setObservations(String observations) {
         return this.observation = observations;
 
+    }
+
+    public static void resetPlantIDCount() {
+        nextPlantId = 0;
     }
 }

@@ -89,4 +89,14 @@ public class TestFolder {
         assertEquals(testPlant3, testFolder.getPlant(2));
     }
 
+    @Test
+    void testGetPlantByPlantId() {
+        testFolder.addPlant(testPlant1);
+        testFolder.addPlant(testPlant2);
+        testFolder.addPlant(testPlant3);
+        assertEquals(testPlant3, testFolder.getPlantByPlantId(3));
+        assertEquals(testPlant2, testFolder.getPlantByPlantId(2));
+        assertEquals(testPlant1, testFolder.getPlantByPlantId(1));
+    }
+
 }

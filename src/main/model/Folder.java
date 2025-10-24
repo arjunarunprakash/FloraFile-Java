@@ -83,4 +83,12 @@ public class Folder {
 
     }
 
+    /*
+     * REQUIRES: a non-empty folder & existing plant Id
+     * EFFECTS: returns plant object with corresponding plant id
+     */
+    public Plant getPlantByPlantId(int id) {
+
+    }
+
 }

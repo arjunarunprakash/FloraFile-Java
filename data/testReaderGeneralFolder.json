@@ -1,0 +1,21 @@
+{
+    "folder": [
+        {
+            "commonName": "Red Rose",
+            "dateAdded": 20250607,
+            "ubcLocation": "No Details",
+            "speciesName": "No Details",
+            "observations": "No Details",
+            "plantId": 1
+            
+        },
+        {
+            "commonName": "Sunflower",
+            "date added": 20250809,
+            "ubcLocation": "Main Mall",
+            "speciesName": "No Details",
+            "observations": "No Details",
+            "plantId": 2
+        }
+    ]
+}

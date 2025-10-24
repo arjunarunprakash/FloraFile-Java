@@ -1,0 +1,52 @@
+package persistence;
+
+import model.Plant;
+import model.Folder;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.IOException;
+import java.util.List;
+
+public class JsonReaderTest extends JsonTest {
+
+    @Test
+    void testReaderNonExistentFile() {
+        JsonReader reader = new JsonReader("./data/noSuchFile.json");
+        try {
+            Folder f = reader.read();
+            fail("IOException expected");
+        } catch (IOException e) {
+            // pass
+        }
+    }
+
+    @Test
+    void testReaderEmptyFolder() {
+        JsonReader reader = new JsonReader("./data/testReaderEmptyFolder.json");
+        try {
+            Folder f = reader.read();
+            assertEquals(0, f.folderSize());
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        }
+    }
+
+    @Test
+    void testReaderGeneralFolder() {
+        JsonReader reader = new JsonReader("./data/testReaderGeneralFolder.json");
+        try {
+            Folder f = reader.read();
+            List<Plant> plants = f.getFolder();
+            assertEquals(2, plants.size());
+            checkPlant("Red Rose", 20250607,"No Details", "No Details", 
+            "No Details", 1, plants.get(0));
+            checkPlant("Sunflower", 20250809, "Main Mall", "No Details", 
+            "No Details", 2, plants.get(1));
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        }
+    }
+
+}

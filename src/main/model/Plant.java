@@ -105,6 +105,11 @@ public class Plant implements Writable{
 
     }
 
+    // EFFECTS: sets ubcLocation using String
+    public void setLocationString(String l) {
+        this.ubcLocation = l;
+    }
+
     /*
      * REQUIRES: observations must have length greater than 0
      * MODIFIES: this
@@ -118,6 +123,11 @@ public class Plant implements Writable{
     // EFFECTS: resets plantId count to 0
     public static void resetPlantIDCount() {
         nextPlantId = 0;
+    }
+
+    // EFFECTS: sets plantId count to 0
+    public void setPlantId(int i) {
+        this.plantId = i;
     }
 
     //EFFECTS: returns this as JSON Object

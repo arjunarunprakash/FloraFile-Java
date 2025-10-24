@@ -79,7 +79,7 @@ public class Folder {
             public int compare(Plant p1, Plant p2) {
                 return Integer.valueOf(p1.getPlantId()).compareTo(p2.getPlantId());
             }
-            });
+        });
 
     }
 
@@ -88,6 +88,12 @@ public class Folder {
      * EFFECTS: returns plant object with corresponding plant id
      */
     public Plant getPlantByPlantId(int id) {
+        for (Plant p : this.folder) {
+            if (p.getPlantId() == id) {
+                return p;
+            }
+        }
+        return null;
 
     }
 

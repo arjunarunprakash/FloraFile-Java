@@ -100,4 +100,28 @@ public class TestFolder {
         assertEquals(null, testFolder.getPlantByPlantId(4));
     }
 
+    @Test
+    void testRemoveByPlantId() {
+        testFolder.addPlant(testPlant1);
+        testFolder.addPlant(testPlant2);
+        testFolder.addPlant(testPlant3);
+        testFolder.removeByPlantId(1);
+        assertEquals(2, testFolder.folderSize());
+        assertEquals(testPlant2, testFolder.getPlant(0));
+        assertEquals(testPlant3, testFolder.getPlant(1));
+        assertEquals(testPlant2, testFolder.getPlantByPlantId(2));
+        assertEquals(testPlant3, testFolder.getPlantByPlantId(3));
+    }
+
+    @Test
+    void testRemoveMultipleByPlantId() {
+        testFolder.addPlant(testPlant1);
+        testFolder.addPlant(testPlant2);
+        testFolder.addPlant(testPlant3);
+        testFolder.removeByPlantId(1);
+        testFolder.removeByPlantId(2);
+        assertEquals(1, testFolder.folderSize());
+        assertEquals(testPlant3, testFolder.getPlant(0));
+        assertEquals(testPlant3, testFolder.getPlantByPlantId(3));
+    }
 }

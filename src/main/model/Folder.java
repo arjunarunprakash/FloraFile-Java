@@ -5,7 +5,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Folder {
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
+public class Folder implements Writable {
 
     private List<Plant> folder;
 
@@ -118,6 +123,17 @@ public class Folder {
      */
     public List<Plant> getFolder() {
         return this.folder;
+    }
+    
+    //EFFECTS: returns this as JSON Object
+    @Override
+    public JSONObject toJson() {
+        return null;
+    }
+
+    // EFFECTS: returns plants in this folder as a JSON array
+    private JSONArray plantsToJson() {
+        return null;
     }
 
 }

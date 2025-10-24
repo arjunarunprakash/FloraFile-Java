@@ -1,7 +1,11 @@
 package model;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents a Plant having a common name, species name, location, date, and observation
-public class Plant {
+public class Plant implements Writable{
     private String commonName; // common name of plant
     private String speciesName; // species name of plant
     private String ubcLocation; // Location of plant on UBC
@@ -111,7 +115,14 @@ public class Plant {
 
     }
 
+    // EFFECTS: resets plantId count to 0
     public static void resetPlantIDCount() {
         nextPlantId = 0;
+    }
+
+    //EFFECTS: returns this as JSON Object
+    @Override
+    public JSONObject toJson() {
+        return null;
     }
 }

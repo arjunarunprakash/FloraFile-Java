@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Folder {
@@ -8,7 +10,7 @@ public class Folder {
     public List<Plant> folder;
 
     public Folder() {
-         this.folder = new ArrayList<Plant>();
+        this.folder = new ArrayList<Plant>();
     }
 
     /*
@@ -33,7 +35,7 @@ public class Folder {
      * EFFECTS: checks if folder is empty
      */
     public boolean isFolderEmpty() {
-       return folder.isEmpty();
+        return folder.isEmpty();
     }
 
     /*
@@ -53,5 +55,22 @@ public class Folder {
         return folder.size();
     }
 
+    /*
+     * REQUIRES: a non-empty list
+     * MODIFIES: folder
+     * EFFECTS: sort list by date
+     */
+    public void sortListByDateAdded() {
+
+    }
+
+    /*
+     * REQUIRES: a non-empty folder
+     * MODIFIES: folder
+     * EFFECTS: sort list by plantId
+     */
+    public void sortListByPlantId() {
+        
+        }
 
 }

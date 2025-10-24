@@ -38,11 +38,11 @@ public class Folder {
      */
     public void removeByPlantId(int id) {
         Plant suspect = null;
-        for (Plant p: this.folder) {
+        for (Plant p : this.folder) {
             if (p.getPlantId() == id) {
                 suspect = p;
-            } 
-            
+            }
+
         }
         this.folder.remove(suspect);
     }
@@ -118,9 +118,6 @@ public class Folder {
      */
     public List<Plant> getFolder() {
         return this.folder;
-        }
-        
-
-    
+    }
 
 }

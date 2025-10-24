@@ -141,6 +141,6 @@ public class TestFolder {
         testFolder.removeByPlantId(2);
         assertEquals(1, testFolder.folderSize());
         assertEquals(testFolderField, testFolder.getFolder());
-        
+
     }
 }

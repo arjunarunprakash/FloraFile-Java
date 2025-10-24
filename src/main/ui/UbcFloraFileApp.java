@@ -76,7 +76,7 @@ public class UbcFloraFileApp {
         } else {
             System.out.println();
             System.out.println("You have " + cabinetFolder.folderSize() + " entries in your folder!");
-        
+
             for (Plant entry : cabinetFolder.getFolder()) {
                 System.out.println("( " + entry.getPlantId() + " ) " + entry.getCommonName());
             }

@@ -160,6 +160,6 @@ public class Plant implements Writable {
     //MODIFIES: this
     //EFFECT: sets the entryCounter static field variable to given integer
     public static void setEntryCounter(int count) {
-
+        Plant.entryCounter = count;
     }
 }

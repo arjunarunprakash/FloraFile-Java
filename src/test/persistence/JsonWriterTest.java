@@ -27,7 +27,7 @@ class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterEmptyWorkroom() {
+    void testWriterEmptyFolder() {
         try {
             Folder f = new Folder();
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyFolder.json");
@@ -44,7 +44,7 @@ class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterGeneralWorkroom() {
+    void testWriterGeneralFolder() {
         try {
             Folder f = new Folder();
             f.addPlant(new Plant("Red Rose", 20250607, "No Details", "No Details", "No Details", 1));
@@ -54,7 +54,7 @@ class JsonWriterTest extends JsonTest {
             writer.write(f);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterGeneralFolder.json");
             f = reader.read();
             List<Plant> folder = f.getFolder();
             assertEquals(2, folder.size());

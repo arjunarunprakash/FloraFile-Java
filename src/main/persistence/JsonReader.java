@@ -66,6 +66,7 @@ public class JsonReader {
         int plantId = jsonObject.getInt("plantId");
 
         Plant plant = new Plant(commonName, dateAdded, ubcLocation, speciesName, observations, plantId);
+        f.addPlant(plant);
     }
 
 }

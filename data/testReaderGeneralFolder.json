@@ -6,7 +6,8 @@
             "ubcLocation": "No Details",
             "speciesName": "No Details",
             "observations": "No Details",
-            "plantId": 1
+            "plantId": 1,
+            "entryCounter": 1
             
         },
         {
@@ -15,7 +16,8 @@
             "ubcLocation": "Main Mall",
             "speciesName": "No Details",
             "observations": "No Details",
-            "plantId": 2
+            "plantId": 2,
+            "entryCounter": 2
         }
     ]
 }

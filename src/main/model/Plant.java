@@ -33,6 +33,22 @@ public class Plant implements Writable{
 
     }
 
+    /*
+     * REQUIRES: name that has a non-zero length,
+     * and date entered in correct YYYYMMDD format,
+     * plantid is unique and valid parameter.
+     * EFFECTS: constructs plant where all fields are manually set based on parameters
+     */
+    public Plant(String name, int date, String ubcL, String specName, String obs,
+    int plantId) {
+        this.commonName = name;
+        this.dateAdded = date;
+        this.speciesName = specName;
+        this.ubcLocation = ubcL;
+        this.observation = obs;
+        this.plantId = plantId;
+    }
+
     public String getCommonName() {
         return commonName;
     }
@@ -133,6 +149,13 @@ public class Plant implements Writable{
     //EFFECTS: returns this as JSON Object
     @Override
     public JSONObject toJson() {
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("commonName", commonName);
+        json.put("dateAdded", dateAdded);
+        json.put("ubcLocation", ubcLocation);
+        json.put("speciesName", speciesName);
+        json.put("observations", observation);
+        json.put("plantId", plantId);
+        return json;
     }
 }

@@ -25,9 +25,11 @@ public class UbcFloraFileApp {
      * starts the application; displays menu too user;
      */
     public UbcFloraFileApp() {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         this.onlineApp = true;
         while (onlineApp) {
-            userMenu();
+            displayUserMenu();
             selector(this.userInput.nextInt());
             userInput.nextLine();
         }
@@ -41,15 +43,48 @@ public class UbcFloraFileApp {
      * Display options for User to delete items in Folder;
      * Display option for User to see total size of Folder;
      */
-    public void userMenu() {
+    public void displayUserMenu() {
         System.out.println();
         System.out.println("Welcome to the UBC FloraFile");
         System.out.println("1. Add a Entry");
         System.out.println("2. View, edit, or delete an Entry");
         System.out.println("3. View total number of plants");
-        System.out.println("4. Exit");
+        System.out.println("4. save current entries to file");
+        System.out.println("5. load previously saved entries");
+        System.out.println("6. Exit");
         System.out.print("Please select one of the following option: ");
 
+    }
+
+    /*
+     * REQUIRES: valid choice from User
+     * MODIFIES: this
+     * EFFECTS: chooses the correct method to execute
+     */
+    public void selector(int userInput) {
+        switch (userInput) {
+            case 1:
+                newEntry();
+                break;
+            case 2:
+                viewFolder();
+                break;
+            case 3:
+                System.out.println("\nYour folder has " + cabinetFolder.folderSize() + " entries");
+                break;
+            case 4:
+                saveFolder();
+                break;
+            case 5:
+                loadFolder();
+                break;
+            case 6:
+                this.onlineApp = false;
+                break;
+            default:
+                System.out.println("Please enter valid number");
+                break;
+        }
     }
 
     /*
@@ -157,33 +192,6 @@ public class UbcFloraFileApp {
     }
 
     /*
-     * REQUIRES: valid choice from User
-     * MODIFIES: this
-     * EFFECTS: chooses the correct method to execute
-     */
-    public void selector(int userInput) {
-        switch (userInput) {
-            case 1:
-                newEntry();
-                break;
-            case 2:
-                viewFolder();
-                break;
-            case 3:
-                System.out.println("\nYour folder has " + cabinetFolder.folderSize() + " entries");
-                break;
-            case 4:
-                this.onlineApp = false;
-                break;
-
-            default:
-                System.out.println("Please enter valid number");
-                break;
-        }
-
-    }
-
-    /*
      * EFFECTS: Helper for modification System Print
      */
     public void modificationMessage() {
@@ -263,11 +271,11 @@ public class UbcFloraFileApp {
 
     // EFFECTS: saves the Folder to file
     private void saveFolder() {
-         try {
+        try {
             jsonWriter.open();
             jsonWriter.write(cabinetFolder);
             jsonWriter.close();
-            System.out.println("Saved your catalog to " + JSON_STORE);
+            System.out.println("\nSucessfully Saved your catalog to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -278,8 +286,8 @@ public class UbcFloraFileApp {
     // EFFECTS: loads Folder from file
     private void loadFolder() {
         try {
-            jsonReader.read();
-            System.out.println("Loaded your saved catalog from " + JSON_STORE);
+            cabinetFolder = jsonReader.read();
+            System.out.println("\nSucessfully Loaded your saved catalog from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }

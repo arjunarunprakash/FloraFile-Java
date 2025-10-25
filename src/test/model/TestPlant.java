@@ -71,4 +71,24 @@ public class TestPlant {
         testPlant.setObservations("Found among other invasive plants");
         assertEquals("Found among other invasive plants", testPlant.getObservations());
     }
+
+    @Test
+    void testSetEntryCounter() {
+        int count = testPlant.getEntryCounter();
+        assertEquals(1, count);
+        Plant.setEntryCounter(36);
+        assertEquals(36, count);
+    }
+
+    @Test
+    void testSetEntryCounterMultipleTimes() {
+        int count = testPlant.getEntryCounter();
+        assertEquals(0, count);
+        Plant.setEntryCounter(36);
+        assertEquals(36, count);
+        Plant.setEntryCounter(42);
+        assertEquals(42, count);
+        Plant updatedTestPlant = new Plant("Blackberry", 20251025);
+        assertEquals(43, updatedTestPlant.getPlantId());
+    }
 }

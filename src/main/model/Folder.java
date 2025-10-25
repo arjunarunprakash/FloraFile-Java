@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import persistence.Writable;
 
+// Keeps a catalog of all the plants added
 public class Folder implements Writable {
 
     private List<Plant> folder;
@@ -128,12 +129,20 @@ public class Folder implements Writable {
     //EFFECTS: returns this as JSON Object
     @Override
     public JSONObject toJson() {
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("folder", plantsToJson());
+        return json;
     }
 
     // EFFECTS: returns plants in this folder as a JSON array
     private JSONArray plantsToJson() {
-        return null;
+        JSONArray jsonArray = new JSONArray();
+
+        for (Plant p : folder) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
     }
 
 }

@@ -46,13 +46,13 @@ public class UbcFloraFileApp {
     public void displayUserMenu() {
         System.out.println();
         System.out.println("Welcome to the UBC FloraFile");
-        System.out.println("1. Add a Entry");
-        System.out.println("2. View, edit, or delete an Entry");
-        System.out.println("3. View total number of plants");
-        System.out.println("4. save current entries to file");
-        System.out.println("5. load previously saved entries");
-        System.out.println("6. Exit");
-        System.out.print("Please select one of the following option: ");
+        System.out.println("\t1. Add a Entry");
+        System.out.println("\t2. View, edit, or delete an Entry");
+        System.out.println("\t3. View total number of plants");
+        System.out.println("\t4. save current entries to file");
+        System.out.println("\t5. load previously saved entries");
+        System.out.println("\t6. Exit");
+        System.out.print("Please select one of the following options: ");
 
     }
 
@@ -70,7 +70,8 @@ public class UbcFloraFileApp {
                 viewFolder();
                 break;
             case 3:
-                System.out.println("\nYour folder has " + cabinetFolder.folderSize() + " entries");
+                System.out.println(
+                        "\n-----You have " + "[" + cabinetFolder.folderSize() + "]" + " entries in your folder!-----");
                 break;
             case 4:
                 saveFolder();
@@ -102,7 +103,7 @@ public class UbcFloraFileApp {
         Plant entry = new Plant(name, date);
         cabinetFolder.addPlant(entry);
 
-        System.out.println("Your entry has been successfully added");
+        System.out.println("-----Your entry has been successfully added-----");
 
     }
 
@@ -116,28 +117,34 @@ public class UbcFloraFileApp {
      */
     public void viewFolder() {
         if (cabinetFolder.isFolderEmpty()) {
-            System.out.println("Error! Your Folder is empty! Add entry.");
+            System.out.println("\nError! Your Folder is empty! Add entry.");
         } else {
             System.out.println();
-            System.out.println("You have " + cabinetFolder.folderSize() + " entries in your folder!");
+            System.out.println(
+                    "-----You have " + "[" + cabinetFolder.folderSize() + "]" + " entries in your folder!-----");
 
             for (Plant entry : cabinetFolder.getFolder()) {
-                System.out.println("( " + entry.getPlantId() + " ) " + entry.getCommonName());
+                System.out.println("\t( " + entry.getPlantId() + " ) " + entry.getCommonName());
             }
+            deleteOrEditMessage();
+            String entry = userInput.next();
+
+            if (entry.equalsIgnoreCase("y")) {
+                System.out.println("Please select the plant you wish to edit/delete using its plant ID");
+                int plantId = userInput.nextInt();
+                selectEntry(plantId);
+            }
+
         }
 
+    }
+
+    // EFFECT: helper to ask if user would like to edit or delete entry
+    public void deleteOrEditMessage() {
         System.out.println();
         System.out.println("Do you want to edit/delete a entry?");
-        System.out.println("[1] Yes");
-        System.out.println("[2] No");
-        int entry = userInput.nextInt();
-
-        if (entry == 1) {
-            System.out.println("Please select the plant you wish to edit/delete using its plant ID");
-            int plantId = userInput.nextInt();
-            selectEntry(plantId);
-        }
-
+        System.out.println("\t y -> Yes");
+        System.out.println("\t n -> No");
     }
 
     /*
@@ -150,12 +157,12 @@ public class UbcFloraFileApp {
         Plant plant = cabinetFolder.getPlantByPlantId(entry);
         System.out.println("You have selected: ");
         System.out.println();
-        System.out.println("Entry #: " + entry);
-        System.out.println("Date Added: " + plant.getDateAdded());
-        System.out.println("Common Name: " + plant.getCommonName());
-        System.out.println("Species Name: " + plant.getSpeciesName());
-        System.out.println("Found at: " + plant.getUbcLocation());
-        System.out.println("Observations: " + plant.getObservations());
+        System.out.println("\tEntry #: " + entry);
+        System.out.println("\tDate Added: " + plant.getDateAdded());
+        System.out.println("\tCommon Name: " + plant.getCommonName());
+        System.out.println("\tSpecies Name: " + plant.getSpeciesName());
+        System.out.println("\tFound at: " + plant.getUbcLocation());
+        System.out.println("\tObservations: " + plant.getObservations());
         modificationMessage();
         int input = userInput.nextInt();
         entryModifier(input, plant);
@@ -195,14 +202,13 @@ public class UbcFloraFileApp {
      * EFFECTS: Helper for modification System Print
      */
     public void modificationMessage() {
-        System.out.println();
-        System.out.println("What would you like to do?");
-        System.out.println("[1] Modify Common Name");
-        System.out.println("[2] Modify Species Name");
-        System.out.println("[3] Modify Location");
-        System.out.println("[4] Modify Observation");
-        System.out.println("[5] Delete Entry");
-        System.out.println("[6] Go Back to Menu");
+        System.out.println("\nWhat would you like to do?");
+        System.out.println("\t[1] Modify Common Name");
+        System.out.println("\t[2] Modify Species Name");
+        System.out.println("\t[3] Modify Location");
+        System.out.println("\t[4] Modify Observation");
+        System.out.println("\t[5] Delete Entry");
+        System.out.println("\t[6] Go Back to Menu");
     }
 
     /*
@@ -211,10 +217,10 @@ public class UbcFloraFileApp {
     public void locationMessage() {
         System.out.println();
         System.out.println("Please select your location using the number");
-        System.out.println("[1] Main Mall");
-        System.out.println("[2] University Blvd");
-        System.out.println("[3] West Mall");
-        System.out.println("[4] East Mall");
+        System.out.println("\t[1] Main Mall");
+        System.out.println("\t[2] University Blvd");
+        System.out.println("\t[3] West Mall");
+        System.out.println("\t[4] East Mall");
     }
 
     /*
@@ -227,7 +233,7 @@ public class UbcFloraFileApp {
         userInput.nextLine();
         String commonName = userInput.nextLine();
         plant.setCommonName(commonName);
-        System.out.println("Common Name has been Updated!");
+        System.out.println("\n-----Common Name has been Updated!-----");
     }
 
     /*
@@ -240,7 +246,7 @@ public class UbcFloraFileApp {
         userInput.nextLine();
         String speciesName = userInput.nextLine();
         plant.setSpeciesName(speciesName);
-        System.out.print("Species Name has been Updated!");
+        System.out.print("\n-----Species Name has been Updated!-----");
     }
 
     /*
@@ -250,10 +256,9 @@ public class UbcFloraFileApp {
      */
     public void ubcLocationModifier(Plant plant) {
         locationMessage();
-        userInput.nextInt();
         int ubcLocation = userInput.nextInt();
         plant.setUbcLocation(ubcLocation);
-        System.out.println("Location has been Updated!");
+        System.out.println("-----Location has been Updated!-----");
     }
 
     /*
@@ -263,10 +268,9 @@ public class UbcFloraFileApp {
      */
     public void observationModifier(Plant plant) {
         System.out.println("Please type your Observations");
-        userInput.nextLine();
         String observations = userInput.nextLine();
         plant.setObservations(observations);
-        System.out.println("Observations has been Updated!");
+        System.out.println("-----Observations has been Updated!-----");
     }
 
     // Referenced from the JsonSerialization Demo
@@ -277,7 +281,7 @@ public class UbcFloraFileApp {
             jsonWriter.open();
             jsonWriter.write(cabinetFolder);
             jsonWriter.close();
-            System.out.println("\nSucessfully Saved your catalog to " + JSON_STORE);
+            System.out.println("\n-----Sucessfully Saved your catalog to " + JSON_STORE + " -----");
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -289,7 +293,7 @@ public class UbcFloraFileApp {
     private void loadFolder() {
         try {
             cabinetFolder = jsonReader.read();
-            System.out.println("\nSucessfully Loaded your saved catalog from " + JSON_STORE);
+            System.out.println("\n-----Sucessfully Loaded your saved catalog from " + JSON_STORE + " -----");
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }

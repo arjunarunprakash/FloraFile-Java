@@ -74,18 +74,18 @@ public class TestPlant {
 
     @Test
     void testSetEntryCounter() {
-        assertEquals(1, testPlant.getEntryCounter());
+        assertEquals(1, Plant.getEntryCounter());
         Plant.setEntryCounter(36);
-        assertEquals(36, testPlant.getEntryCounter());
+        assertEquals(36, Plant.getEntryCounter());
     }
 
     @Test
     void testSetEntryCounterMultipleTimes() {
-        assertEquals(1, testPlant.getEntryCounter());
+        assertEquals(1, Plant.getEntryCounter());
         Plant.setEntryCounter(36);
-        assertEquals(36, testPlant.getEntryCounter());
+        assertEquals(36, Plant.getEntryCounter());
         Plant.setEntryCounter(42);
-        assertEquals(42, testPlant.getEntryCounter());
+        assertEquals(42, Plant.getEntryCounter());
         Plant updatedTestPlant = new Plant("Blackberry", 20251025);
         assertEquals(43, updatedTestPlant.getPlantId());
     }

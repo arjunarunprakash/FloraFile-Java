@@ -147,12 +147,11 @@ public class Plant implements Writable {
         json.put("speciesName", speciesName);
         json.put("observations", observation);
         json.put("plantId", plantId);
-        json.put("entryCounter", entryCounter);
         return json;
     }
 
     // EFFECT: simple getter method to return the current entryCounter value
-    public int getEntryCounter() {
+    public static int getEntryCounter() {
         return entryCounter;
     }
     

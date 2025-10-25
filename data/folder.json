@@ -1,0 +1,13 @@
+{
+    "thingies": [
+        {
+            "name": "\"tomby\"",
+            "category": "WOODWORK"
+        },
+        {
+            "name": "\"Metally\"",
+            "category": "METALWORK"
+        }
+    ],
+    "name": "Alex's workroom"
+}

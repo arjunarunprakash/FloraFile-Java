@@ -6,15 +6,19 @@ import java.util.Scanner;
 
 import model.Folder;
 import model.Plant;
-
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
 // Represents the console UI and keeps track of all plants added
 @ExcludeFromJacocoGeneratedReport
 public class UbcFloraFileApp {
+    private static final String JSON_STORE = "./data/folder.json";
     private Scanner userInput = new Scanner(System.in); // A way to see user input
     private Boolean onlineApp; // A way to control app runtime
     private Folder cabinetFolder = new Folder();
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     /*
      * EFFECTS: initializes the application by setting onlineApp = true;
@@ -259,12 +263,26 @@ public class UbcFloraFileApp {
 
     // EFFECTS: saves the Folder to file
     private void saveFolder() {
+         try {
+            jsonWriter.open();
+            jsonWriter.write(cabinetFolder);
+            jsonWriter.close();
+            System.out.println("Saved your catalog to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
 
     }
 
     // MODIFIES: this
     // EFFECTS: loads Folder from file
     private void loadFolder() {
+        try {
+            jsonReader.read();
+            System.out.println("Loaded your saved catalog from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
 
     }
 

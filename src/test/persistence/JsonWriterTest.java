@@ -47,8 +47,8 @@ class JsonWriterTest extends JsonTest {
     void testWriterGeneralWorkroom() {
         try {
             Folder f = new Folder();
-            f.addPlant(new Plant("Red Rose", 20250607));
-            f.addPlant(new Plant("Sunflower", 20250809));
+            f.addPlant(new Plant("Red Rose", 20250607, "No Details", "No Details", "No Details", 1));
+            f.addPlant(new Plant("Sunflower", 20250809, "Main Mall", "No Details", "No Details", 2));
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralFolder.json");
             writer.open();
             writer.write(f);

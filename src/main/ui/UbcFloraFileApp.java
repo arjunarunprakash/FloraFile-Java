@@ -79,7 +79,7 @@ public class UbcFloraFileApp {
                 loadFolder();
                 break;
             case 6:
-                this.onlineApp = false;
+                exitApp();
                 break;
             default:
                 System.out.println("Please enter valid number");
@@ -290,6 +290,27 @@ public class UbcFloraFileApp {
             System.out.println("\nSucessfully Loaded your saved catalog from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: gives user to save application, then exits
+    private void exitApp() {
+        System.out.println("\n Would you like to save your progress?");
+        System.out.println("\t y -> yes, save progress");
+        System.out.println("\t n -> no, exit now");
+        String input = userInput.nextLine();
+        switch (input) {
+            case ("y"):
+                saveFolder();
+                break;
+            case ("n"):
+                this.onlineApp = false;
+                break;
+            default:
+                System.out.println("Please enter valid input");
+                break;
         }
 
     }

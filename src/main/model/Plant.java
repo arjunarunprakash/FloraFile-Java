@@ -150,4 +150,16 @@ public class Plant implements Writable {
         json.put("entryCounter", entryCounter);
         return json;
     }
+
+    // EFFECT: simple getter method to return the current entryCounter value
+    public int getEntryCounter() {
+        return entryCounter;
+    }
+    
+    //REQUIRES: positve integer as count
+    //MODIFIES: this
+    //EFFECT: sets the entryCounter static field variable to given integer
+    public static void setEntryCounter(int count) {
+
+    }
 }

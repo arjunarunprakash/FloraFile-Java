@@ -268,7 +268,7 @@ public class UbcFloraFileApp {
      */
     public void observationModifier(Plant plant) {
         System.out.println("Please type your Observations");
-        String observations = userInput.nextLine();
+        String observations = userInput.next();
         plant.setObservations(observations);
         System.out.println("-----Observations has been Updated!-----");
     }

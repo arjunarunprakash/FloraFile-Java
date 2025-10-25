@@ -7,11 +7,13 @@ import org.junit.jupiter.api.Test;
 
 public class TestPlant {
     private Plant testPlant;
+    private Plant testOverLoadedPlant;
 
     @BeforeEach
     void runBefore() {
         Plant.resetPlantIDCount();
         testPlant = new Plant("Meadow Foxtail", 20251009);
+        testOverLoadedPlant = new Plant("Red Rose", 20250607, "Main Mall", "Rosa", "vibrant red", 2 );
     }
 
     @Test
@@ -22,6 +24,17 @@ public class TestPlant {
         assertEquals("No Details", testPlant.getObservations());
         assertEquals("No Details", testPlant.getUbcLocation());
         assertEquals(1, testPlant.getPlantId());
+    }
+
+    @Test
+    void testOverloadedPlantConstructor() {
+
+        assertEquals("Red Rose", testOverLoadedPlant.getCommonName());
+        assertEquals(20250607, testOverLoadedPlant.getDateAdded());
+        assertEquals("Rosa", testOverLoadedPlant.getSpeciesName());
+        assertEquals("vibrant red", testOverLoadedPlant.getObservations());
+        assertEquals("Main Mall", testOverLoadedPlant.getUbcLocation());
+        assertEquals(2, testOverLoadedPlant.getPlantId());
     }
 
     @Test

@@ -300,16 +300,16 @@ public class UbcFloraFileApp {
         System.out.println("\n Would you like to save your progress?");
         System.out.println("\t y -> yes, save progress");
         System.out.println("\t n -> no, exit now");
-        String input = userInput.nextLine();
+        String input = userInput.next();
         switch (input) {
-            case ("y"):
+            case "y":
                 saveFolder();
                 break;
-            case ("n"):
+            case "n":
                 this.onlineApp = false;
                 break;
             default:
-                System.out.println("Please enter valid input");
+                System.out.println("Error, please enter valid input");
                 break;
         }
 

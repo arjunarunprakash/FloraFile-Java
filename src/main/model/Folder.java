@@ -125,8 +125,10 @@ public class Folder implements Writable {
     public List<Plant> getFolder() {
         return this.folder;
     }
-    
-    //EFFECTS: returns this as JSON Object
+
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // EFFECTS: returns this as JSON Object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -134,6 +136,8 @@ public class Folder implements Writable {
         return json;
     }
 
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // EFFECTS: returns plants in this folder as a JSON array
     private JSONArray plantsToJson() {
         JSONArray jsonArray = new JSONArray();

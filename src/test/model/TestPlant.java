@@ -16,7 +16,7 @@ public class TestPlant {
     void runBefore() {
         Plant.resetPlantIDCount();
         testPlant = new Plant("Meadow Foxtail", 20251009);
-        testOverLoadedPlant = new Plant("Red Rose", 20250607, "Main Mall", "Rosa", "vibrant red", 2 );
+        testOverLoadedPlant = new Plant("Red Rose", 20250607, "Main Mall", "Rosa", "vibrant red", 2);
     }
 
     @Test

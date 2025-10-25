@@ -1,13 +1,34 @@
-{
-    "thingies": [
-        {
-            "name": "\"tomby\"",
-            "category": "WOODWORK"
-        },
-        {
-            "name": "\"Metally\"",
-            "category": "METALWORK"
-        }
-    ],
-    "name": "Alex's workroom"
-}
+{"folder": [
+    {
+        "commonName": "Red Rose",
+        "speciesName": "No Details",
+        "observations": "No Details",
+        "ubcLocation": "No Details",
+        "plantId": 1,
+        "dateAdded": 20241024
+    },
+    {
+        "commonName": "Sunflower",
+        "speciesName": "No Details",
+        "observations": "No Details",
+        "ubcLocation": "No Details",
+        "plantId": 2,
+        "dateAdded": 20251023
+    },
+    {
+        "commonName": "Salmon Berry",
+        "speciesName": "No Details",
+        "observations": "No Details",
+        "ubcLocation": "No Details",
+        "plantId": 3,
+        "dateAdded": 20251022
+    },
+    {
+        "commonName": "Lavender",
+        "speciesName": "No Details",
+        "observations": "No Details",
+        "ubcLocation": "No Details",
+        "plantId": 1,
+        "dateAdded": 20250609
+    }
+]}

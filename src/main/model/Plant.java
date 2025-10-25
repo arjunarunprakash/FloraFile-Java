@@ -5,7 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 // Represents a Plant having a common name, species name, location, date, and observation
-public class Plant implements Writable{
+public class Plant implements Writable {
     private String commonName; // common name of plant
     private String speciesName; // species name of plant
     private String ubcLocation; // Location of plant on UBC
@@ -37,10 +37,11 @@ public class Plant implements Writable{
      * REQUIRES: name that has a non-zero length,
      * and date entered in correct YYYYMMDD format,
      * plantid is unique and valid parameter.
-     * EFFECTS: constructs plant where all fields are manually set based on parameters
+     * EFFECTS: constructs plant where all fields are manually set based on
+     * parameters
      */
     public Plant(String name, int date, String ubcL, String specName, String obs,
-    int plantId) {
+            int plantId) {
         this.commonName = name;
         this.dateAdded = date;
         this.speciesName = specName;
@@ -121,7 +122,6 @@ public class Plant implements Writable{
 
     }
 
-
     /*
      * REQUIRES: observations must have length greater than 0
      * MODIFIES: this
@@ -137,8 +137,7 @@ public class Plant implements Writable{
         nextPlantId = 0;
     }
 
-
-    //EFFECTS: returns this as JSON Object
+    // EFFECTS: returns this as JSON Object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

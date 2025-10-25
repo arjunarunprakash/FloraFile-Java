@@ -11,6 +11,9 @@ import java.util.stream.Stream;
 import org.json.*;
 
 // Represents a reader that reads folder from JSON data stored in file
+
+// Referenced from the JsonSerialization Demo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class JsonReader {
     private String source;
 

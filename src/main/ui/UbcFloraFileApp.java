@@ -269,6 +269,8 @@ public class UbcFloraFileApp {
         System.out.println("Observations has been Updated!");
     }
 
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // EFFECTS: saves the Folder to file
     private void saveFolder() {
         try {
@@ -294,6 +296,8 @@ public class UbcFloraFileApp {
 
     }
 
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: gives user to save application, then exits
     private void exitApp() {

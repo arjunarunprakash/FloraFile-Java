@@ -12,10 +12,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExcludeFromJacocoGeneratedReport
+// Referenced from the JsonSerialization Demo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 class JsonWriterTest extends JsonTest {
-    //NOTE TO CPSC 210 STUDENTS: the strategy in designing tests for the JsonWriter is to
-    //write data to a file and then use the reader to read it back in and check that we
-    //read in a copy of what was written out.
 
     @Test
     void testWriterInvalidFile() {
@@ -60,10 +59,10 @@ class JsonWriterTest extends JsonTest {
             f = reader.read();
             List<Plant> folder = f.getFolder();
             assertEquals(2, folder.size());
-            checkPlant("Red Rose", 20250607,"No Details", "No Details", 
-            "No Details", 1, folder.get(0));
-            checkPlant("Sunflower", 20250809, "Main Mall", "No Details", 
-            "No Details", 2, folder.get(1));
+            checkPlant("Red Rose", 20250607, "No Details", "No Details",
+                    "No Details", 1, folder.get(0));
+            checkPlant("Sunflower", 20250809, "Main Mall", "No Details",
+                    "No Details", 2, folder.get(1));
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");

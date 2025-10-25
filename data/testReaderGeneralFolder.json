@@ -6,9 +6,7 @@
             "ubcLocation": "No Details",
             "speciesName": "No Details",
             "observations": "No Details",
-            "plantId": 1,
-            "entryCounter": 1
-            
+            "plantId": 1
         },
         {
             "commonName": "Sunflower",
@@ -16,8 +14,7 @@
             "ubcLocation": "Main Mall",
             "speciesName": "No Details",
             "observations": "No Details",
-            "plantId": 2,
-            "entryCounter": 2
+            "plantId": 2
         }
     ]
 }

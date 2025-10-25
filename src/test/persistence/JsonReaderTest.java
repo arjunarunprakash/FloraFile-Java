@@ -45,6 +45,7 @@ public class JsonReaderTest extends JsonTest {
             Folder f = reader.read();
             List<Plant> plants = f.getFolder();
             assertEquals(2, plants.size());
+            assertEquals(2, Plant.getEntryCounter());
             checkPlant("Red Rose", 20250607, "No Details", "No Details",
                     "No Details", 1, plants.get(0));
             checkPlant("Sunflower", 20250809, "Main Mall", "No Details",

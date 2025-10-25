@@ -11,7 +11,7 @@ public class Plant implements Writable {
     private String ubcLocation; // Location of plant on UBC
     private int dateAdded; // Listed date found - YYYYMMDD format
     private String observation; // Observations
-    private static int nextPlantId = 0;
+    private static int entryCounter = 0; //Counts total number of entries in application
     private int plantId;
     private String noDetail = "No Details";
 
@@ -28,8 +28,8 @@ public class Plant implements Writable {
         this.speciesName = noDetail;
         this.ubcLocation = noDetail;
         this.observation = noDetail;
-        nextPlantId++;
-        this.plantId = nextPlantId;
+        entryCounter++;
+        this.plantId = entryCounter;
 
     }
 
@@ -134,7 +134,7 @@ public class Plant implements Writable {
 
     // EFFECTS: resets plantId count to 0
     public static void resetPlantIDCount() {
-        nextPlantId = 0;
+        entryCounter = 0;
     }
 
     // EFFECTS: returns this as JSON Object
@@ -147,6 +147,7 @@ public class Plant implements Writable {
         json.put("speciesName", speciesName);
         json.put("observations", observation);
         json.put("plantId", plantId);
+        json.put("entryCounter", entryCounter);
         return json;
     }
 }

@@ -1,5 +1,7 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import model.Folder;
@@ -253,6 +255,17 @@ public class UbcFloraFileApp {
         String observations = userInput.nextLine();
         plant.setObservations(observations);
         System.out.println("Observations has been Updated!");
+    }
+
+    // EFFECTS: saves the Folder to file
+    private void saveFolder() {
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads Folder from file
+    private void loadFolder() {
+
     }
 
 }

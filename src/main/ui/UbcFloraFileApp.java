@@ -5,7 +5,10 @@ import java.util.Scanner;
 import model.Folder;
 import model.Plant;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+
 // Represents the console UI and keeps track of all plants added
+@ExcludeFromJacocoGeneratedReport
 public class UbcFloraFileApp {
     private Scanner userInput = new Scanner(System.in); // A way to see user input
     private Boolean onlineApp; // A way to control app runtime

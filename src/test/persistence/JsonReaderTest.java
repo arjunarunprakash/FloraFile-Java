@@ -4,11 +4,14 @@ import model.Plant;
 import model.Folder;
 import org.junit.jupiter.api.Test;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 import java.util.List;
 
+@ExcludeFromJacocoGeneratedReport
 public class JsonReaderTest extends JsonTest {
 
     @Test

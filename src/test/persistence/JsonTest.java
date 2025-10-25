@@ -4,6 +4,9 @@ import model.Plant;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+
+@ExcludeFromJacocoGeneratedReport
 public class JsonTest {
     protected void checkPlant(String commonName, int dateAdded, 
     String ubcLocation, String speciesName, String observation, int plantId, Plant plant) {

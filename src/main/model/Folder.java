@@ -15,6 +15,7 @@ public class Folder implements Writable {
 
     private List<Plant> folder;
 
+    // Initializes new folder object with plant
     public Folder() {
         this.folder = new ArrayList<Plant>();
     }

@@ -98,9 +98,7 @@ public class UbcFloraFileApp {
         System.out.println("Please enter the Common Name of the plant");
         userInput.nextLine();
         String name = userInput.nextLine();
-        System.out.println("Please enter the date you found the plant (YYYYMMDD)");
-        int date = userInput.nextInt();
-        Plant entry = new Plant(name, date);
+        Plant entry = new Plant(name);
         cabinetFolder.addPlant(entry);
 
         System.out.println("-----Your entry has been successfully added-----");
@@ -124,7 +122,7 @@ public class UbcFloraFileApp {
                     "-----You have " + "[" + cabinetFolder.folderSize() + "]" + " entries in your folder!-----");
 
             for (Plant entry : cabinetFolder.getFolder()) {
-                System.out.println("\t( " + entry.getPlantId() + " ) " + entry.getCommonName());
+                System.out.println("\t( " + entry.getPlantId() + " ) " + " " + entry.getFormattedDateTime() + " " + entry.getCommonName());
             }
             deleteOrEditMessage();
             String entry = userInput.next();
@@ -158,7 +156,7 @@ public class UbcFloraFileApp {
         System.out.println("You have selected: ");
         System.out.println();
         System.out.println("\tEntry #: " + entry);
-        System.out.println("\tDate Added: " + plant.getDateAdded());
+        System.out.println("\tDate Added: " + plant.getFormattedDateTime());
         System.out.println("\tCommon Name: " + plant.getCommonName());
         System.out.println("\tSpecies Name: " + plant.getSpeciesName());
         System.out.println("\tFound at: " + plant.getUbcLocation());

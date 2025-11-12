@@ -29,7 +29,7 @@ public class Plant implements Writable {
     public Plant(String name) {
         this.commonName = name;
         this.dateAdded = LocalDateTime.now();
-        this.dateFormatted = getFormattedDateTime();
+        this.dateFormatted = formatDateTime();
         this.speciesName = noDetail;
         this.ubcLocation = noDetail;
         this.observation = noDetail;
@@ -66,7 +66,7 @@ public class Plant implements Writable {
     public Plant(String name, Clock clk) {
         this.commonName = name;
         this.dateAdded = LocalDateTime.now(clk);
-        this.dateFormatted = getFormattedDateTime();
+        this.dateFormatted = formatDateTime();
         this.speciesName = noDetail;
         this.ubcLocation = noDetail;
         this.observation = noDetail;
@@ -180,7 +180,7 @@ public class Plant implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("commonName", commonName);
-        json.put("dateAdded", dateAdded);
+        json.put("dateFormatted", dateFormatted);
         json.put("ubcLocation", ubcLocation);
         json.put("speciesName", speciesName);
         json.put("observations", observation);
@@ -207,8 +207,14 @@ public class Plant implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECT: Formats the LocalDateTime so that it looks better in dd-MM-YYYY HH-mm-ss
+    // EFFECT: gets the getDateTimeAdded
     public String getFormattedDateTime() {
+        return dateFormatted;
+    }
+
+    // MODIFIES: this
+    // EFFECT: Formats the LocalDateTime so that it looks better in dd-MM-YYYY HH-mm-ss
+    public String formatDateTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         dateFormatted = dateAdded.format(formatter);
         return dateFormatted;

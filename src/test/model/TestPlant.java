@@ -33,7 +33,7 @@ public class TestPlant {
     void testPlantConstructor() {
         assertEquals("Meadow Foxtail", testPlant.getCommonName());
         assertEquals(fixedDateTime, testPlant.getDateTimeAdded());
-        assertEquals("25-12-2025 12:00:00", testPlant.getFormattedDateTime());
+        assertEquals("25-12-2025 12:00:00", testPlant.formattedDateTime());
         assertEquals("No Details", testPlant.getSpeciesName());
         assertEquals("No Details", testPlant.getObservations());
         assertEquals("No Details", testPlant.getUbcLocation());
@@ -45,7 +45,7 @@ public class TestPlant {
 
         assertEquals("Red Rose", testOverLoadedPlant.getCommonName());
         assertEquals(fixedDateTime, testOverLoadedPlant.getDateTimeAdded());
-        assertEquals("25-12-2025 12:00:00", testPlant.getFormattedDateTime());
+        assertEquals("25-12-2025 12:00:00", testPlant.formattedDateTime());
         assertEquals("Rosa", testOverLoadedPlant.getSpeciesName());
         assertEquals("vibrant red", testOverLoadedPlant.getObservations());
         assertEquals("Main Mall", testOverLoadedPlant.getUbcLocation());

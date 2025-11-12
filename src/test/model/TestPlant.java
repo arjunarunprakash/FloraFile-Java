@@ -26,7 +26,7 @@ public class TestPlant {
         
         Plant.resetPlantIDCount();
         testPlant = new Plant("Meadow Foxtail", fixedClock);
-        testOverLoadedPlant = new Plant("Red Rose", "Main Mall", "Rosa", "vibrant red", 2, fixedClock);
+        testOverLoadedPlant = new Plant("Red Rose","25-12-2025 12:00:00", "Main Mall", "Rosa", "vibrant red", 2, fixedClock);
     }
 
     @Test

@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDateTime;
+
 import org.json.JSONObject;
 
 import persistence.Writable;
@@ -161,4 +163,15 @@ public class Plant implements Writable {
     public static void setEntryCounter(int count) {
         Plant.entryCounter = count;
     }
+
+    // MODIFIES: this
+    // EFFECT: formats localDateTime to dd-MM-YYYY HH-mm-ss
+    public void dateTimeFormatter() {
+        // stub
+    }
+
+    public LocalDateTime getDateTimeAdded() {
+        // stub
+    }
+
 }

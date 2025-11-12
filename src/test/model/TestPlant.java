@@ -2,7 +2,10 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Clock;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,20 +16,23 @@ import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 public class TestPlant {
     private Plant testPlant;
     private Plant testOverLoadedPlant;
-    private LocalDateTime dateAndTime;
+    private LocalDateTime fixedDateTime = LocalDateTime.of(2025, 12, 25, 12, 0, 0);
+    private ZoneId zone = ZoneId.systemDefault();
+    private Instant fixedInstant = fixedDateTime.atZone(zone).toInstant();
+    private Clock fixedClock = Clock.fixed(fixedInstant, zone);
 
     @BeforeEach
     void runBefore() {
-        this.dateAndTime = LocalDateTime.of(2025, 12, 25, 12, 0, 0);
+        
         Plant.resetPlantIDCount();
-        testPlant = new Plant("Meadow Foxtail");
-        testOverLoadedPlant = new Plant("Red Rose", "Main Mall", "Rosa", "vibrant red", 2);
+        testPlant = new Plant("Meadow Foxtail", fixedClock);
+        testOverLoadedPlant = new Plant("Red Rose", "Main Mall", "Rosa", "vibrant red", 2, fixedClock);
     }
 
     @Test
     void testPlantConstructor() {
         assertEquals("Meadow Foxtail", testPlant.getCommonName());
-        assertEquals(dateAndTime, testPlant.getDateTimeAdded());
+        assertEquals(fixedDateTime, testPlant.getDateTimeAdded());
         assertEquals("25-12-2025 12:00:00", testPlant.getFormattedDateTime());
         assertEquals("No Details", testPlant.getSpeciesName());
         assertEquals("No Details", testPlant.getObservations());
@@ -38,7 +44,8 @@ public class TestPlant {
     void testOverloadedPlantConstructor() {
 
         assertEquals("Red Rose", testOverLoadedPlant.getCommonName());
-        assertEquals(20250607, testOverLoadedPlant.getDateTimeAdded());
+        assertEquals(fixedDateTime, testOverLoadedPlant.getDateTimeAdded());
+        assertEquals("25-12-2025 12:00:00", testPlant.getFormattedDateTime());
         assertEquals("Rosa", testOverLoadedPlant.getSpeciesName());
         assertEquals("vibrant red", testOverLoadedPlant.getObservations());
         assertEquals("Main Mall", testOverLoadedPlant.getUbcLocation());

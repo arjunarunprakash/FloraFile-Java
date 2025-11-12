@@ -172,7 +172,7 @@ public class Plant implements Writable {
 
     // EFFECTS: resets plantId count to 0
     public static void resetPlantIDCount() {
-        entryCounter = 0;
+        Plant.entryCounter = 0;
     }
 
     // EFFECTS: returns this as JSON Object

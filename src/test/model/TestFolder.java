@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class TestFolder {
 
     private Folder testFolder;
-    
+
     private ZoneId zone = ZoneId.systemDefault();
 
     private LocalDateTime fixedDateTime = LocalDateTime.of(2025, 12, 25, 12, 0, 0);
@@ -44,17 +44,23 @@ public class TestFolder {
     private Instant fixedInstant6 = fixedDateTimeMinusYear.atZone(zone).toInstant();
     private Clock fixedClock6 = Clock.fixed(fixedInstant6, zone);
 
-    private Plant testPlant1 = new Plant("Red Rose", fixedClock);
-    private Plant testPlant2 = new Plant("Sunflower", fixedClock2);
-    private Plant testPlant3 = new Plant("Salmon Berry", fixedClock3);
-    private Plant testPlant4 = new Plant("BlackBerry", fixedClock4);
-    private Plant testPlant5 = new Plant("Japanese Maple", fixedClock5);
-    private Plant testPlant6 = new Plant("Douglas Fir", fixedClock6);
+    private Plant testPlant1;
+    private Plant testPlant2;
+    private Plant testPlant3;
+    private Plant testPlant4;
+    private Plant testPlant5;
+    private Plant testPlant6;
 
     @BeforeEach
     void runBefore() {
         this.testFolder = new Folder();
         Plant.resetPlantIDCount();
+        testPlant1 = new Plant("Red Rose", fixedClock);
+        testPlant2 = new Plant("Sunflower", fixedClock2);
+        testPlant3 = new Plant("Salmon Berry", fixedClock3);
+        testPlant4 = new Plant("BlackBerry", fixedClock4);
+        testPlant5 = new Plant("Japanese Maple", fixedClock5);
+        testPlant6 = new Plant("Douglas Fir", fixedClock6);
     }
 
     @Test

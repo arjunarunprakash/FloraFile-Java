@@ -46,9 +46,9 @@ public class JsonReaderTest extends JsonTest {
             List<Plant> plants = f.getFolder();
             assertEquals(2, plants.size());
             assertEquals(2, Plant.getEntryCounter());
-            checkPlant("Red Rose", 20250607, "No Details", "No Details",
+            checkPlant("Red Rose", "25-12-2025 12:00:00", "No Details", "No Details",
                     "No Details", 1, plants.get(0));
-            checkPlant("Sunflower", 20250809, "Main Mall", "No Details",
+            checkPlant("Sunflower", "26-01-2026 00:00:01", "Main Mall", "No Details",
                     "No Details", 2, plants.get(1));
         } catch (IOException e) {
             fail("Couldn't read from file");

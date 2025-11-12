@@ -48,8 +48,8 @@ class JsonWriterTest extends JsonTest {
     void testWriterGeneralFolder() {
         try {
             Folder f = new Folder();
-            f.addPlant(new Plant("Red Rose", 20250607, "No Details", "No Details", "No Details", 1));
-            f.addPlant(new Plant("Sunflower", 20250809, "Main Mall", "No Details", "No Details", 2));
+            f.addPlant(new Plant("Red Rose", "25-12-2025 12:00:00", "No Details", "No Details", "No Details", 1));
+            f.addPlant(new Plant("Sunflower", "26-01-2026 00:00:01", "Main Mall", "No Details", "No Details", 2));
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralFolder.json");
             writer.open();
             writer.write(f);
@@ -59,9 +59,9 @@ class JsonWriterTest extends JsonTest {
             f = reader.read();
             List<Plant> folder = f.getFolder();
             assertEquals(2, folder.size());
-            checkPlant("Red Rose", 20250607, "No Details", "No Details",
+            checkPlant("Red Rose", "25-12-2025 12:00:00", "No Details", "No Details",
                     "No Details", 1, folder.get(0));
-            checkPlant("Sunflower", 20250809, "Main Mall", "No Details",
+            checkPlant("Sunflower", "26-01-2026 00:00:01", "Main Mall", "No Details",
                     "No Details", 2, folder.get(1));
 
         } catch (IOException e) {

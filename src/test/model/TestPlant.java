@@ -2,6 +2,8 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,18 +13,21 @@ import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 public class TestPlant {
     private Plant testPlant;
     private Plant testOverLoadedPlant;
+    private LocalDateTime dateAndTime;
 
     @BeforeEach
     void runBefore() {
+        this.dateAndTime = LocalDateTime.of(2025, 12, 25, 12, 0, 0);
         Plant.resetPlantIDCount();
-        testPlant = new Plant("Meadow Foxtail", 20251009);
-        testOverLoadedPlant = new Plant("Red Rose", 20250607, "Main Mall", "Rosa", "vibrant red", 2);
+        testPlant = new Plant("Meadow Foxtail");
+        testOverLoadedPlant = new Plant("Red Rose", "Main Mall", "Rosa", "vibrant red", 2);
     }
 
     @Test
     void testPlantConstructor() {
         assertEquals("Meadow Foxtail", testPlant.getCommonName());
-        assertEquals(20251009, testPlant.getDateAdded());
+        assertEquals(dateAndTime, testPlant.getDateTimeAdded());
+        assertEquals("25-12-2025 12:00:00", testPlant.getFormattedDateTime());
         assertEquals("No Details", testPlant.getSpeciesName());
         assertEquals("No Details", testPlant.getObservations());
         assertEquals("No Details", testPlant.getUbcLocation());
@@ -33,7 +38,7 @@ public class TestPlant {
     void testOverloadedPlantConstructor() {
 
         assertEquals("Red Rose", testOverLoadedPlant.getCommonName());
-        assertEquals(20250607, testOverLoadedPlant.getDateAdded());
+        assertEquals(20250607, testOverLoadedPlant.getDateTimeAdded());
         assertEquals("Rosa", testOverLoadedPlant.getSpeciesName());
         assertEquals("vibrant red", testOverLoadedPlant.getObservations());
         assertEquals("Main Mall", testOverLoadedPlant.getUbcLocation());
@@ -86,7 +91,9 @@ public class TestPlant {
         assertEquals(36, Plant.getEntryCounter());
         Plant.setEntryCounter(42);
         assertEquals(42, Plant.getEntryCounter());
-        Plant updatedTestPlant = new Plant("Blackberry", 20251025);
+        Plant updatedTestPlant = new Plant("Blackberry");
         assertEquals(43, updatedTestPlant.getPlantId());
     }
+
+  
 }

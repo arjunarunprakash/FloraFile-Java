@@ -27,7 +27,7 @@ public class Plant implements Writable {
     public Plant(String name) {
         this.commonName = name;
         this.dateAdded = LocalDateTime.now();
-        this.dateFormatted = getDateTimeAdded(dateAdded);
+        this.dateFormatted = getFormattedDateTime();
         this.speciesName = noDetail;
         this.ubcLocation = noDetail;
         this.observation = noDetail;
@@ -46,7 +46,7 @@ public class Plant implements Writable {
             int plantId) {
         this.commonName = name;
         this.dateAdded = LocalDateTime.now();
-        this.dateFormatted = getDateTimeAdded(dateAdded);
+        this.dateFormatted = getFormattedDateTime();
         this.speciesName = specName;
         this.ubcLocation = ubcL;
         this.observation = obs;
@@ -162,12 +162,14 @@ public class Plant implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECT: formats localDateTime to dd-MM-YYYY HH-mm-ss
-    public void dateTimeFormatter() {
-        // stub
+    // EFFECT: gets the getDateTimeAdded
+    public LocalDateTime getDateTimeAdded() {
+        return null;
     }
 
-    public String getDateTimeAdded(LocalDateTime date) {
+    //MODIFIES: dateFormatted
+    //EFFECT: Formats the LocalDateTime so that it looks better in dd-MM-YYYY HH-mm-ss
+    public String getFormattedDateTime() {
         return "";
     }
 

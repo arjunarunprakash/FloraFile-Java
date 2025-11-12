@@ -13,8 +13,8 @@ public class Plant implements Writable {
     private String commonName; // common name of plant
     private String speciesName; // species name of plant
     private String ubcLocation; // Location of plant on UBC
-    private LocalDateTime dateAdded; // Listed date found dd-MM-yyyy HH:mm:ss format
-    private String dateFormatted;
+    private LocalDateTime dateAdded; 
+    private String dateFormatted; // Listed date found dd-MM-yyyy HH:mm:ss format
     private String observation; // Observations
     private static int entryCounter = 0; //Counts total number of entries in application
     private int plantId;
@@ -42,13 +42,14 @@ public class Plant implements Writable {
      * REQUIRES: name that has a non-zero length,
      * plantid is unique and valid parameter.
      * EFFECTS: constructs plant where all fields are manually set based on
-     * parameters
+     * parameters; for persistence writing; 
+     * parses LocalDateTime from dateFormatted String
      */
-    public Plant(String name, String ubcL, String specName, String obs,
+    public Plant(String name, String dateF, String ubcL, String specName, String obs,
             int plantId) {
         this.commonName = name;
-        this.dateAdded = LocalDateTime.now();
-        this.dateFormatted = getFormattedDateTime();
+        this.dateFormatted = dateF;
+        this.dateAdded = LocalDateTime.parse(dateF, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
         this.speciesName = specName;
         this.ubcLocation = ubcL;
         this.observation = obs;
@@ -80,11 +81,11 @@ public class Plant implements Writable {
      * EFFECTS: creates a testable constructor plant where all fields are manually set based on
      * parameters
      */
-    public Plant(String name, String ubcL, String specName, String obs,
+    public Plant(String name, String dateF, String ubcL, String specName, String obs,
             int plantId, Clock clk) {
         this.commonName = name;
-        this.dateAdded = LocalDateTime.now(clk);
-        this.dateFormatted = getFormattedDateTime();
+        this.dateAdded = LocalDateTime.parse(dateF, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+        this.dateFormatted = dateF;
         this.speciesName = specName;
         this.ubcLocation = ubcL;
         this.observation = obs;

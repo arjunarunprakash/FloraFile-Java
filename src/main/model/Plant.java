@@ -11,7 +11,7 @@ public class Plant implements Writable {
     private String commonName; // common name of plant
     private String speciesName; // species name of plant
     private String ubcLocation; // Location of plant on UBC
-    private int dateAdded; // Listed date found - YYYYMMDD format
+    private LocalDateTime dateAdded; // Listed date found dd-MM-yyyy HH:mm:ss format
     private String observation; // Observations
     private static int entryCounter = 0; //Counts total number of entries in application
     private int plantId;
@@ -62,10 +62,6 @@ public class Plant implements Writable {
 
     public String getUbcLocation() {
         return ubcLocation;
-    }
-
-    public int getDateAdded() {
-        return dateAdded;
     }
 
     public String getObservations() {

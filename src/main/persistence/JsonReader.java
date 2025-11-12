@@ -62,14 +62,14 @@ public class JsonReader {
     // EFFECTS: parses plant from JSON object and adds it to folder and updated entryCounter
     private void addPlant(Folder f, JSONObject jsonObject) {
         String commonName = jsonObject.getString("commonName");
-        int dateAdded = jsonObject.getInt("dateAdded");
+        String dateFormatted = jsonObject.getString("dateFormatted");
         String ubcLocation = jsonObject.getString("ubcLocation");
         String speciesName = jsonObject.getString("speciesName");
         String observations = jsonObject.getString("observations");
         int plantId = jsonObject.getInt("plantId");
         Plant.setEntryCounter(jsonObject.getInt("plantId"));
 
-        Plant plant = new Plant(commonName, dateAdded, ubcLocation, speciesName, observations, plantId);
+        Plant plant = new Plant(commonName, dateFormatted, ubcLocation, speciesName, observations, plantId);
         f.addPlant(plant);
     }
 

@@ -7,15 +7,49 @@ import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Clock;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 @ExcludeFromJacocoGeneratedReport
 public class TestFolder {
 
     private Folder testFolder;
-    private Plant testPlant1 = new Plant("Red Rose", 20241023);
-    private Plant testPlant2 = new Plant("Sunflower", 20250118);
-    private Plant testPlant3 = new Plant("Salmon Berry", 20250326);
+    
+    private ZoneId zone = ZoneId.systemDefault();
+
+    private LocalDateTime fixedDateTime = LocalDateTime.of(2025, 12, 25, 12, 0, 0);
+    private Instant fixedInstant = fixedDateTime.atZone(zone).toInstant();
+    private Clock fixedClock = Clock.fixed(fixedInstant, zone);
+
+    private LocalDateTime fixedDateTimeMinusSecond = LocalDateTime.of(2025, 12, 25, 11, 59, 59);
+    private Instant fixedInstant2 = fixedDateTimeMinusSecond.atZone(zone).toInstant();
+    private Clock fixedClock2 = Clock.fixed(fixedInstant2, zone);
+
+    private LocalDateTime fixedDateTimeMinusMin = LocalDateTime.of(2025, 12, 25, 11, 59, 0);
+    private Instant fixedInstant3 = fixedDateTimeMinusMin.atZone(zone).toInstant();
+    private Clock fixedClock3 = Clock.fixed(fixedInstant3, zone);
+
+    private LocalDateTime fixedDateTimeMinusDay = LocalDateTime.of(2025, 12, 24, 12, 0, 0);
+    private Instant fixedInstant4 = fixedDateTimeMinusDay.atZone(zone).toInstant();
+    private Clock fixedClock4 = Clock.fixed(fixedInstant4, zone);
+
+    private LocalDateTime fixedDateTimeMinusMonth = LocalDateTime.of(2025, 11, 24, 12, 0, 0);
+    private Instant fixedInstant5 = fixedDateTimeMinusMonth.atZone(zone).toInstant();
+    private Clock fixedClock5 = Clock.fixed(fixedInstant5, zone);
+
+    private LocalDateTime fixedDateTimeMinusYear = LocalDateTime.of(2024, 12, 24, 12, 0, 0);
+    private Instant fixedInstant6 = fixedDateTimeMinusYear.atZone(zone).toInstant();
+    private Clock fixedClock6 = Clock.fixed(fixedInstant6, zone);
+
+    private Plant testPlant1 = new Plant("Red Rose", fixedClock);
+    private Plant testPlant2 = new Plant("Sunflower", fixedClock2);
+    private Plant testPlant3 = new Plant("Salmon Berry", fixedClock3);
+    private Plant testPlant4 = new Plant("BlackBerry", fixedClock4);
+    private Plant testPlant5 = new Plant("Japanese Maple", fixedClock5);
+    private Plant testPlant6 = new Plant("Douglas Fir", fixedClock6);
 
     @BeforeEach
     void runBefore() {
@@ -71,28 +105,43 @@ public class TestFolder {
 
     @Test
     void testSortListByDateAdded() {
-        testFolder.addPlant(testPlant1);
-        testFolder.addPlant(testPlant2);
+        testFolder.addPlant(testPlant6);
+        testFolder.addPlant(testPlant5);
+        testFolder.addPlant(testPlant4);
         testFolder.addPlant(testPlant3);
+        testFolder.addPlant(testPlant2);
+        testFolder.addPlant(testPlant1);
         testFolder.sortListByDateAdded();
-        assertEquals(testPlant3, testFolder.getPlant(0));
+        assertEquals(testPlant1, testFolder.getPlant(0));
         assertEquals(testPlant2, testFolder.getPlant(1));
-        assertEquals(testPlant1, testFolder.getPlant(2));
+        assertEquals(testPlant3, testFolder.getPlant(2));
+        assertEquals(testPlant4, testFolder.getPlant(3));
+        assertEquals(testPlant5, testFolder.getPlant(4));
+        assertEquals(testPlant6, testFolder.getPlant(5));
     }
 
     @Test
     void testSortListByPlantId() {
-        testFolder.addPlant(testPlant1);
-        testFolder.addPlant(testPlant2);
+        testFolder.addPlant(testPlant6);
+        testFolder.addPlant(testPlant5);
+        testFolder.addPlant(testPlant4);
         testFolder.addPlant(testPlant3);
+        testFolder.addPlant(testPlant2);
+        testFolder.addPlant(testPlant1);
         testFolder.sortListByDateAdded();
-        assertEquals(testPlant3, testFolder.getPlant(0));
+        assertEquals(testPlant1, testFolder.getPlant(0));
         assertEquals(testPlant2, testFolder.getPlant(1));
-        assertEquals(testPlant1, testFolder.getPlant(2));
+        assertEquals(testPlant3, testFolder.getPlant(2));
+        assertEquals(testPlant4, testFolder.getPlant(3));
+        assertEquals(testPlant5, testFolder.getPlant(4));
+        assertEquals(testPlant6, testFolder.getPlant(5));
         testFolder.sortListByPlantId();
         assertEquals(testPlant1, testFolder.getPlant(0));
         assertEquals(testPlant2, testFolder.getPlant(1));
         assertEquals(testPlant3, testFolder.getPlant(2));
+        assertEquals(testPlant4, testFolder.getPlant(0));
+        assertEquals(testPlant5, testFolder.getPlant(1));
+        assertEquals(testPlant6, testFolder.getPlant(2));
     }
 
     @Test

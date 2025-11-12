@@ -1,6 +1,8 @@
 package model;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.json.JSONObject;
 
@@ -46,6 +48,42 @@ public class Plant implements Writable {
             int plantId) {
         this.commonName = name;
         this.dateAdded = LocalDateTime.now();
+        this.dateFormatted = getFormattedDateTime();
+        this.speciesName = specName;
+        this.ubcLocation = ubcL;
+        this.observation = obs;
+        this.plantId = plantId;
+    }
+
+        /*
+     * REQUIRES: name that has a non-zero length
+     * EFFECTS: creates a testable constructor
+     * commonName is set to name; dateFound is set to date; plant id is
+     * unique positive integer.
+     * speciesName, ubcLocation, and observations are set to default values
+     */
+    public Plant(String name, Clock clk) {
+        this.commonName = name;
+        this.dateAdded = LocalDateTime.now(clk);
+        this.dateFormatted = getFormattedDateTime();
+        this.speciesName = noDetail;
+        this.ubcLocation = noDetail;
+        this.observation = noDetail;
+        entryCounter++;
+        this.plantId = entryCounter;
+
+    }
+
+    /*
+     * REQUIRES: name that has a non-zero length,
+     * plantid is unique and valid parameter.
+     * EFFECTS: creates a testable constructor plant where all fields are manually set based on
+     * parameters
+     */
+    public Plant(String name, String ubcL, String specName, String obs,
+            int plantId, Clock clk) {
+        this.commonName = name;
+        this.dateAdded = LocalDateTime.now(clk);
         this.dateFormatted = getFormattedDateTime();
         this.speciesName = specName;
         this.ubcLocation = ubcL;
@@ -164,13 +202,15 @@ public class Plant implements Writable {
     // MODIFIES: this
     // EFFECT: gets the getDateTimeAdded
     public LocalDateTime getDateTimeAdded() {
-        return null;
+        return dateAdded;
     }
 
     //MODIFIES: dateFormatted
     //EFFECT: Formats the LocalDateTime so that it looks better in dd-MM-YYYY HH-mm-ss
     public String getFormattedDateTime() {
-        return "";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        dateFormatted = dateAdded.format(formatter);
+        return dateFormatted;
     }
 
 }

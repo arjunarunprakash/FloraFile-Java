@@ -193,9 +193,9 @@ public class Plant implements Writable {
         return entryCounter;
     }
     
-    //REQUIRES: positve integer as count
-    //MODIFIES: this
-    //EFFECT: sets the entryCounter static field variable to given integer
+    // REQUIRES: positve integer as count
+    // MODIFIES: this
+    // EFFECT: sets the entryCounter static field variable to given integer
     public static void setEntryCounter(int count) {
         Plant.entryCounter = count;
     }
@@ -206,8 +206,8 @@ public class Plant implements Writable {
         return dateAdded;
     }
 
-    //MODIFIES: dateFormatted
-    //EFFECT: Formats the LocalDateTime so that it looks better in dd-MM-YYYY HH-mm-ss
+    // MODIFIES: this
+    // EFFECT: Formats the LocalDateTime so that it looks better in dd-MM-YYYY HH-mm-ss
     public String getFormattedDateTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         dateFormatted = dateAdded.format(formatter);

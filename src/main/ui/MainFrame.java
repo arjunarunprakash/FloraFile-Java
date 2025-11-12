@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-// MainFrame is a child of JFrame, made for GUI components
+// MainFrame is a child of JFrame, represents opening window made for GUI components
 public class MainFrame extends JFrame {
 
     private Color offWhiteColour = new Color(245,242,208);

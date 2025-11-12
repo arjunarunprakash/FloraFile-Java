@@ -104,20 +104,44 @@ public class TestFolder {
     }
 
     @Test
-    void testSortListByDateAdded() {
+    void testSortListByNewestToOldest() {
         testFolder.addPlant(testPlant6);
         testFolder.addPlant(testPlant5);
         testFolder.addPlant(testPlant4);
         testFolder.addPlant(testPlant3);
         testFolder.addPlant(testPlant2);
         testFolder.addPlant(testPlant1);
-        testFolder.sortListByDateAdded();
+        testFolder.sortListByNewestToOldest();
         assertEquals(testPlant1, testFolder.getPlant(0));
         assertEquals(testPlant2, testFolder.getPlant(1));
         assertEquals(testPlant3, testFolder.getPlant(2));
         assertEquals(testPlant4, testFolder.getPlant(3));
         assertEquals(testPlant5, testFolder.getPlant(4));
         assertEquals(testPlant6, testFolder.getPlant(5));
+    }
+
+    @Test
+    void testSortListByOldestToNewest() {
+        testFolder.addPlant(testPlant6);
+        testFolder.addPlant(testPlant5);
+        testFolder.addPlant(testPlant4);
+        testFolder.addPlant(testPlant3);
+        testFolder.addPlant(testPlant2);
+        testFolder.addPlant(testPlant1);
+        testFolder.sortListByNewestToOldest();
+        assertEquals(testPlant1, testFolder.getPlant(0));
+        assertEquals(testPlant2, testFolder.getPlant(1));
+        assertEquals(testPlant3, testFolder.getPlant(2));
+        assertEquals(testPlant4, testFolder.getPlant(3));
+        assertEquals(testPlant5, testFolder.getPlant(4));
+        assertEquals(testPlant6, testFolder.getPlant(5));
+        testFolder.sortListByOldestToNewest();
+        assertEquals(testPlant6, testFolder.getPlant(0));
+        assertEquals(testPlant5, testFolder.getPlant(1));
+        assertEquals(testPlant4, testFolder.getPlant(2));
+        assertEquals(testPlant3, testFolder.getPlant(3));
+        assertEquals(testPlant2, testFolder.getPlant(4));
+        assertEquals(testPlant1, testFolder.getPlant(5));
     }
 
     @Test
@@ -128,7 +152,7 @@ public class TestFolder {
         testFolder.addPlant(testPlant3);
         testFolder.addPlant(testPlant2);
         testFolder.addPlant(testPlant1);
-        testFolder.sortListByDateAdded();
+        testFolder.sortListByNewestToOldest();
         assertEquals(testPlant1, testFolder.getPlant(0));
         assertEquals(testPlant2, testFolder.getPlant(1));
         assertEquals(testPlant3, testFolder.getPlant(2));
@@ -139,9 +163,9 @@ public class TestFolder {
         assertEquals(testPlant1, testFolder.getPlant(0));
         assertEquals(testPlant2, testFolder.getPlant(1));
         assertEquals(testPlant3, testFolder.getPlant(2));
-        assertEquals(testPlant4, testFolder.getPlant(0));
-        assertEquals(testPlant5, testFolder.getPlant(1));
-        assertEquals(testPlant6, testFolder.getPlant(2));
+        assertEquals(testPlant4, testFolder.getPlant(3));
+        assertEquals(testPlant5, testFolder.getPlant(4));
+        assertEquals(testPlant6, testFolder.getPlant(5));
     }
 
     @Test

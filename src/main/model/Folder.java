@@ -81,14 +81,20 @@ public class Folder implements Writable {
     /*
      * REQUIRES: a non-empty list
      * MODIFIES: folder
-     * EFFECTS: sort list by date descending order
+     * EFFECTS: sort list by date in order of: oldest -> newest
      */
-    public void sortListByDateAdded() {
-        Collections.sort(this.folder, new Comparator<Plant>() {
-            public int compare(Plant p1, Plant p2) {
-                return Integer.valueOf(p2.getDateAdded()).compareTo(p1.getDateAdded());
-            }
-        });
+    public void sortListByOldestToNewest() {
+        folder.sort(Comparator.comparing(Plant::getDateTimeAdded));
+
+    }
+
+    /*
+     * REQUIRES: a non-empty list
+     * MODIFIES: folder
+     * EFFECTS: sort list by date in order of: newest -> oldest
+     */
+    public void sortListByNewestToOldest() {
+        folder.sort(Comparator.comparing(Plant::getDateTimeAdded).reversed());
 
     }
 

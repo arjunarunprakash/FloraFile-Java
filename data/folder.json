@@ -1,11 +1,11 @@
 {"folder": [
     {
         "commonName": "Red Rose",
-        "speciesName": "No Details",
+        "speciesName": "Rosa",
         "observations": "No Details",
-        "ubcLocation": "No Details",
+        "ubcLocation": "University Blvd",
         "plantId": 1,
-        "dateAdded": 20241024
+        "dateFormatted": "12-11-2025 01:17:38"
     },
     {
         "commonName": "Sunflower",
@@ -13,22 +13,14 @@
         "observations": "No Details",
         "ubcLocation": "No Details",
         "plantId": 2,
-        "dateAdded": 20251023
+        "dateFormatted": "12-11-2025 01:19:04"
     },
     {
-        "commonName": "Salmon Berry",
+        "commonName": "lavendar",
         "speciesName": "No Details",
         "observations": "No Details",
         "ubcLocation": "No Details",
         "plantId": 3,
-        "dateAdded": 20251022
-    },
-    {
-        "commonName": "Lavender",
-        "speciesName": "No Details",
-        "observations": "No Details",
-        "ubcLocation": "No Details",
-        "plantId": 1,
-        "dateAdded": 20250609
+        "dateFormatted": "12-11-2025 01:19:21"
     }
 ]}

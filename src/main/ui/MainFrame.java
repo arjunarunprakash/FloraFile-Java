@@ -49,7 +49,15 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     }
 
     // MODIFIES: this
+    // EFFECTS: initializes all relevant of the JFrames settings including:
+    //          Title, Close Operation, Size, LocationRelativeToScreen, Layout,
+    //          IconImage, and ContentPane
+    // MODIFIES: this
     // EFFECTS: added a upper panel to the mainframe of light green color
+    public void setMainFrameSettings(){
+
+    }
+    
     public void upperPanel() {
         upperPanelLabel();
         upperTile = new JPanel();

@@ -7,6 +7,9 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 // MainFrame is a child of JFrame, represents opening window made for GUI components
@@ -15,6 +18,7 @@ public class MainFrame extends JFrame {
     private Color offWhiteColour = new Color(245,242,208);
     private JPanel upperTile;
     private JLabel label;
+    private JMenuBar menuBar;
 
     // EFFECTS: creates new JFrame this, sets title, sets exit behavior, 
     // sets this dimensions, centers this, adds custom logo to this, 
@@ -60,6 +64,11 @@ public class MainFrame extends JFrame {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates menubar on top of frame to allow user to save and load files
+    public void initializeMenuBar(){
+
+    }
 
 
 }

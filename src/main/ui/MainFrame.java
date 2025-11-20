@@ -13,7 +13,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 // MainFrame is a child of JFrame, represents opening window made for GUI components
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements PersistenceInterface {
 
     private Color offWhiteColour = new Color(245,242,208);
     private JPanel upperTile;
@@ -67,8 +67,46 @@ public class MainFrame extends JFrame {
     // MODIFIES: this
     // EFFECTS: creates menubar on top of frame to allow user to save and load files
     public void initializeMenuBar(){
+        menuBar = new JMenuBar();
+        JMenu file = new JMenu("File");
+        JMenuItem saveFile = new JMenuItem("Save Progress");
+        JMenuItem loadFile = new JMenuItem("Load Progress");
+        JMenuItem saveAndExit = new JMenuItem("Save and Exit");
+
+        file.add(saveFile);
+        file.add(loadFile);
+        file.add(saveAndExit);
+
+        saveFile.addActionListener (e -> saveFolder());
+        loadFile.addActionListener (e -> loadFolder());
+        saveAndExit.addActionListener(e -> exitApp());
 
     }
+    
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // MODIFIES: this
+    // EFFECTS: loads Folder from file
+    void loadFolder(){
+
+    }
+
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // MODIFIES: ./data/folder.json
+    // EFFECTS: saves the Folder to file
+    void saveFolder(){
+
+    }
+
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // MODIFIES: this
+    // EFFECTS: gives user to save application, then exits
+    void exitApp(){
+
+    }
+
 
 
 }

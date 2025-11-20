@@ -37,6 +37,7 @@ public class MainFrame extends JFrame implements PersistenceInterface {
             setMainFrameSettings();
 
             menuBar = new JMenuBar();
+            stylizeDialogueBoxes();
             initializeMenuBar();
             this.setJMenuBar(menuBar);
 
@@ -186,8 +187,23 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     }
 
     // MODIFIES: JOptionPane
-    // EFFECT: changes JOptionPane settings to be consistent style
-    public void stylizeDialogBoxes(){
+    // EFFECT: changes JOptionPane settings to be a consistent style
+    public void stylizeDialogueBoxes(){
+    Color woodColor = new Color(233, 175, 108);
+    Color darkBrown = new Color(68, 35, 20);
+    Font pixelFont = new Font("Dialog", Font.BOLD, 16); 
+
+    UIManager.put("OptionPane.background", woodColor);
+    UIManager.put("Panel.background", woodColor); 
+    
+    UIManager.put("OptionPane.messageForeground", darkBrown);
+    UIManager.put("OptionPane.messageFont", pixelFont);
+    UIManager.put("Button.background", Color.WHITE);
+    }
+
+    // MODIFIES: JMenuBar
+    // EFFECT: changes JMenuBar settings to be a consistent style
+    public void stylizeMenuBar() {
         
     }
 

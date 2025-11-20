@@ -185,4 +185,10 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
     }
 
+    // MODIFIES: JOptionPane
+    // EFFECT: changes JOptionPane settings to be consistent style
+    public void stylizeDialogBoxes(){
+        
+    }
+
 }

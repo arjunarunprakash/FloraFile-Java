@@ -19,6 +19,12 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private Folder plantsFolder = new Folder();
+    private ImageIcon iconQuestion = new ImageIcon(new ImageIcon("data/Images/DialogBox Logos/QuestionMark.png")
+            .getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
+    private ImageIcon iconError = new ImageIcon(new ImageIcon("data/Images/DialogBox Logos/ErrorLogo.png").getImage()
+            .getScaledInstance(64, 64, Image.SCALE_SMOOTH));
+    private ImageIcon iconInfo = new ImageIcon(new ImageIcon("data/Images/DialogBox Logos/Information.png").getImage()
+            .getScaledInstance(64, 64, Image.SCALE_SMOOTH));
 
     // EFFECTS: creates new JFrame this, sets title, sets exit behavior,
     // sets this dimensions, centers this, adds custom logo to this,
@@ -29,7 +35,10 @@ public class MainFrame extends JFrame implements PersistenceInterface {
             jsonReader = new JsonReader(PersistenceInterface.JSON_STORE);
 
             setMainFrameSettings();
+
             menuBar = new JMenuBar();
+            initializeMenuBar();
+            this.setJMenuBar(menuBar);
 
             this.setVisible(true);
         } catch (Exception e) {
@@ -103,20 +112,21 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: loads Folder from file
-    void loadFolder() {
+    public void loadFolder() {
         try {
             plantsFolder = jsonReader.read();
 
             JOptionPane.showMessageDialog(this, "Successfully loaded your catalog to:\n" + JSON_STORE,
                     "Load Successful",
-                    JOptionPane.INFORMATION_MESSAGE);
-            System.out.println("\n-----Sucessfully Loaded your saved catalog from " + JSON_STORE + " -----");
+                    JOptionPane.INFORMATION_MESSAGE,
+                    iconInfo);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(
                     this,
                     "Unable to load from file:\n" + JSON_STORE,
                     "Load Failed",
-                    JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE,
+                    iconError);
         }
     }
 
@@ -124,7 +134,7 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // MODIFIES: ./data/folder.json
     // EFFECTS: saves the Folder to file
-    void saveFolder() {
+    public void saveFolder() {
         try {
             jsonWriter.open();
             jsonWriter.write(plantsFolder);
@@ -134,7 +144,8 @@ public class MainFrame extends JFrame implements PersistenceInterface {
                     this,
                     "Successfully saved your catalog to:\n" + JSON_STORE,
                     "Save Successful",
-                    JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.INFORMATION_MESSAGE,
+                    iconInfo);
 
         } catch (FileNotFoundException e) {
 
@@ -142,7 +153,8 @@ public class MainFrame extends JFrame implements PersistenceInterface {
                     this,
                     "Unable to write to file:\n" + JSON_STORE,
                     "Save Failed",
-                    JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE,
+                    iconError);
         }
     }
 
@@ -150,12 +162,14 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: gives user option to save application, then exits
-    void exitApp() {
+    public void exitApp() {
         int chosenOption = JOptionPane.showConfirmDialog(
                 this,
                 "Would you like to save before exit?",
                 "Save?",
-                JOptionPane.YES_NO_CANCEL_OPTION);
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                iconQuestion);
 
         switch (chosenOption) {
             case JOptionPane.YES_OPTION:

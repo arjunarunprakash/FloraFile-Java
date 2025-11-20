@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -24,12 +25,14 @@ public class MainFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800,500);
         this.setLocationRelativeTo(null);
-        this.setLayout(null);
+        this.setLayout(new BorderLayout());
         ImageIcon logo = new ImageIcon("logo.png");
         this.setIconImage(logo.getImage());
-        this.getContentPane().setBackground(offWhiteColour);
-        upperPanel();
-        this.add(upperTile);
+        BackgroundImagePanel bg = new BackgroundImagePanel("data/Images/backgroundImage2.png");
+        this.setContentPane(bg);
+        //this.getContentPane().setBackground(offWhiteColour);
+        //upperPanel();
+        //this.add(upperTile);
         this.setVisible(true);
         } catch (Exception e) {
             System.out.println("MainFrame error");

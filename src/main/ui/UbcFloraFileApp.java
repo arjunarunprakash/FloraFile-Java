@@ -286,6 +286,8 @@ public class UbcFloraFileApp {
 
     }
 
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: loads Folder from file
     private void loadFolder() {

@@ -12,8 +12,7 @@ import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
 // Represents the console UI and keeps track of all plants added
 @ExcludeFromJacocoGeneratedReport
-public class UbcFloraFileApp {
-    private static final String JSON_STORE = "./data/folder.json";
+public class UbcFloraFileApp implements PersistenceInterface {
     private Scanner userInput = new Scanner(System.in); // A way to see user input
     private Boolean onlineApp; // A way to control app runtime
     private Folder cabinetFolder = new Folder();
@@ -25,8 +24,8 @@ public class UbcFloraFileApp {
      * starts the application; displays menu too user;
      */
     public UbcFloraFileApp() {
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriter(PersistenceInterface.JSON_STORE);
+        jsonReader = new JsonReader(PersistenceInterface.JSON_STORE);
         this.onlineApp = true;
         while (onlineApp) {
             displayUserMenu();

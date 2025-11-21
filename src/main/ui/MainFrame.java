@@ -84,6 +84,12 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     }
 
     // MODIFIES: this
+    // EFFECTS: asks user if they want to save before exiting
+    public void handleClose() {
+        
+    }
+
+    // MODIFIES: this
     // EFFECTS: adds BackgroundImagePanel object to background of this. Constructs
     // and adds dashboard into
     // background panel

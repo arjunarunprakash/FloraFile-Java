@@ -4,7 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 import model.Folder;
 import persistence.JsonReader;
@@ -23,12 +26,9 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     private JMenuBar menuBar;
 
     // Icons
-    private ImageIcon iconQuestion = new ImageIcon(new ImageIcon("data/Images/DialogBox Logos/QuestionMark.png")
-            .getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
-    private ImageIcon iconError = new ImageIcon(new ImageIcon("data/Images/DialogBox Logos/ErrorLogo.png").getImage()
-            .getScaledInstance(64, 64, Image.SCALE_SMOOTH));
-    private ImageIcon iconInfo = new ImageIcon(new ImageIcon("data/Images/DialogBox Logos/Information.png").getImage()
-            .getScaledInstance(64, 64, Image.SCALE_SMOOTH));
+    private ImageIcon iconQuestion;
+    private ImageIcon iconError;
+    private ImageIcon iconInfo;
 
     // Colours and Fonts
     private final Color woodColor = new Color(233, 175, 108);
@@ -44,18 +44,16 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     // sets background colour to custom white colour
     public MainFrame() {
         try {
-            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 
-            setMainFrameSettings();
-            stylizeMenuBar();
-            stylizeDialogueBoxes();
+            loadIcons();
+            initLookAndFeel();
 
             jsonWriter = new JsonWriter(PersistenceInterface.JSON_STORE);
             jsonReader = new JsonReader(PersistenceInterface.JSON_STORE);
 
-            menuBar = new JMenuBar();
             initializeMenuBar();
-            this.setJMenuBar(menuBar);
+
+            setMainFrameSettings();
 
             this.setVisible(true);
         } catch (Exception e) {
@@ -76,11 +74,10 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         this.setSize(800, 500);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
-        ImageIcon logo = new ImageIcon("logo.png");
+        ImageIcon logo = new ImageIcon("data/Images/AppLogo.png");
         this.setIconImage(logo.getImage());
         BackgroundImagePanel bg = new BackgroundImagePanel("data/Images/backgroundImage2.png");
         this.setContentPane(bg);
-        // this.getContentPane().setBackground(offWhiteColour);
         // upperPanel();
         // this.add(upperTile);
 
@@ -88,17 +85,29 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
     // EFFECTS: Loads Images and Icons for dialog boxes
     private void loadIcons() {
-
+        iconQuestion = scaleIcon("data/Images/DialogBox Logos/QuestionMark.png");
+        iconError = scaleIcon("data/Images/DialogBox Logos/ErrorLogo.png");
+        iconInfo = scaleIcon("data/Images/DialogBox Logos/Information.png");
+            
     }
 
     // EFFECTS: Helper to scale the icons to 64x64
     private ImageIcon scaleIcon(String path){
-        return null; // stub
+        return new ImageIcon(new ImageIcon (path).getImage()
+        .getScaledInstance(64, 64, Image.SCALE_SMOOTH));
     }
 
     // EFFECTS: Sets up the UI Manager to use CrossPlatform settings and exceutes functions
     //          to initialize the style of Dialog boxes, MenuBar, and MenuItems
     private void initLookAndFeel() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+            stylizeMenuBar();
+            stylizeDialogueBoxes();
+        } catch (Exception e) {
+            System.out.println("StyleInti Error " + e.getMessage());
+            e.printStackTrace();
+        }
 
     }
 
@@ -123,8 +132,13 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     // MODIFIES: this
     // EFFECTS: creates menubar on top of frame to allow user to save and load files
     public void initializeMenuBar() {
+        menuBar = new JMenuBar();
+        menuBar.setOpaque(true);
 
         JMenu file = new JMenu("File");
+        file.setOpaque(true);
+        file.setBorder(new EmptyBorder(5, 15, 5, 15));
+
         JMenuItem saveFile = new JMenuItem("Save Progress");
         JMenuItem loadFile = new JMenuItem("Load Progress");
         JMenuItem Exit = new JMenuItem("Save and Exit");
@@ -139,6 +153,13 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         loadFile.addActionListener(e -> loadFolder());
         Exit.addActionListener(e -> exitApp());
 
+        this.setJMenuBar(menuBar);
+
+    }
+
+    // EFFECT: Helper to reduce repetition when adding new menu Items
+    private JMenuItem createCustomMenuItem (String text, ActionListener action) {
+        return null;
     }
 
     // Referenced from the JsonSerialization Demo
@@ -224,10 +245,10 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
         UIManager.put("OptionPane.background", woodColor);
         UIManager.put("Panel.background", woodColor);
-
         UIManager.put("OptionPane.messageForeground", darkBrownText);
         UIManager.put("OptionPane.messageFont", headerFont);
         UIManager.put("Button.background", Color.WHITE);
+        UIManager.put("Button.foreground", darkBrownText);
     }
 
     // MODIFIES: JMenuBar, JMenu, and JMenuItem
@@ -235,10 +256,12 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     public void stylizeMenuBar() {
 
         UIManager.put("MenuBar.background", woodColor);
+        UIManager.put("MenuBar.opaque", true);
         UIManager.put("MenuBar.border", BorderFactory.createMatteBorder(0, 0, 2, 0, darkWood));
 
         UIManager.put("Menu.background", woodColor);
         UIManager.put("Menu.foreground", darkBrownText);
+        UIManager.put("Menu.opaque", true);
         UIManager.put("Menu.font", pixelFont);
         UIManager.put("Menu.selectionBackground", hoverColor);
         UIManager.put("Menu.selectionForeground", hoverTextColor);

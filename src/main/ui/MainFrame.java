@@ -13,12 +13,16 @@ import persistence.JsonWriter;
 // MainFrame is a child of JFrame, represents opening window made for GUI components
 public class MainFrame extends JFrame implements PersistenceInterface {
 
-    private JPanel upperTile;
-    private JLabel label;
-    private JMenuBar menuBar;
+    // Constants and Field Objects
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private Folder plantsFolder = new Folder();
+
+    private JPanel upperTile;
+    private JLabel label;
+    private JMenuBar menuBar;
+
+    // Icons
     private ImageIcon iconQuestion = new ImageIcon(new ImageIcon("data/Images/DialogBox Logos/QuestionMark.png")
             .getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH));
     private ImageIcon iconError = new ImageIcon(new ImageIcon("data/Images/DialogBox Logos/ErrorLogo.png").getImage()
@@ -26,12 +30,14 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     private ImageIcon iconInfo = new ImageIcon(new ImageIcon("data/Images/DialogBox Logos/Information.png").getImage()
             .getScaledInstance(64, 64, Image.SCALE_SMOOTH));
 
-    private Color woodColor = new Color(233, 175, 108);
-    private Color darkWood = new Color(91, 50, 16);
-    private Color darkBrownText = new Color(68, 35, 20);
-    private Color hoverColor = new Color(216, 66, 39);
-    private Color hoverTextColor = Color.WHITE;
-    private Font pixelFont = new Font("Dialog", Font.BOLD, 14);
+    // Colours and Fonts
+    private final Color woodColor = new Color(233, 175, 108);
+    private final Color darkWood = new Color(91, 50, 16);
+    private final Color darkBrownText = new Color(68, 35, 20);
+    private final Color hoverColor = new Color(216, 66, 39);
+    private final Color hoverTextColor = Color.WHITE;
+    private final Font pixelFont = new Font("Dialog", Font.BOLD, 14);
+    private final Font headerFont = new Font("Dialog", Font.BOLD, 16);
 
     // EFFECTS: creates new JFrame this, sets title, sets exit behavior,
     // sets this dimensions, centers this, adds custom logo to this,
@@ -39,7 +45,7 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     public MainFrame() {
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-            
+
             setMainFrameSettings();
             stylizeMenuBar();
             stylizeDialogueBoxes();
@@ -77,6 +83,22 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         // this.getContentPane().setBackground(offWhiteColour);
         // upperPanel();
         // this.add(upperTile);
+
+    }
+
+    // EFFECTS: Loads Images and Icons for dialog boxes
+    private void loadIcons() {
+
+    }
+
+    // EFFECTS: Helper to scale the icons to 64x64
+    private ImageIcon scaleIcon(String path){
+        return null; // stub
+    }
+
+    // EFFECTS: Sets up the UI Manager to use CrossPlatform settings and exceutes functions
+    //          to initialize the style of Dialog boxes, MenuBar, and MenuItems
+    private void initLookAndFeel() {
 
     }
 
@@ -199,13 +221,12 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     // MODIFIES: JOptionPane
     // EFFECT: changes JOptionPane settings to be a consistent style
     public void stylizeDialogueBoxes() {
-        Font pixelFontBiggerSize = new Font("Dialog", Font.BOLD, 16);
 
         UIManager.put("OptionPane.background", woodColor);
         UIManager.put("Panel.background", woodColor);
 
         UIManager.put("OptionPane.messageForeground", darkBrownText);
-        UIManager.put("OptionPane.messageFont", pixelFontBiggerSize);
+        UIManager.put("OptionPane.messageFont", headerFont);
         UIManager.put("Button.background", Color.WHITE);
     }
 

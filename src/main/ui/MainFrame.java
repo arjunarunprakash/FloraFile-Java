@@ -24,11 +24,13 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     private JPanel upperTile;
     private JLabel label;
     private JMenuBar menuBar;
+    private DashboardPanel dashboard;
 
     // Icons
     private ImageIcon iconQuestion;
     private ImageIcon iconError;
     private ImageIcon iconInfo;
+    private ImageIcon iconAppLogo;
 
     // Colours and Fonts
     private final Color woodColor = new Color(233, 175, 108);
@@ -46,14 +48,20 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         try {
 
             loadIcons();
+            setMainFrameSettings();
             initLookAndFeel();
+            initializeMenuBar();
+
+            BackgroundImagePanel bgPanel = new BackgroundImagePanel("data/Images/backgroundImage2.png");
+            bgPanel.setLayout(new BorderLayout());
+
+            dashboard = new DashboardPanel(plantsFolder);
+            bgPanel.add(dashboard, BorderLayout.CENTER);
+
+            this.setContentPane(bgPanel);
 
             jsonWriter = new JsonWriter(PersistenceInterface.JSON_STORE);
             jsonReader = new JsonReader(PersistenceInterface.JSON_STORE);
-
-            initializeMenuBar();
-
-            setMainFrameSettings();
 
             this.setVisible(true);
         } catch (Exception e) {
@@ -65,22 +73,28 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     // MODIFIES: this
     // EFFECTS: initializes all relevant of the JFrames settings including:
     // Title, Close Operation, Size, LocationRelativeToScreen, Layout,
-    // IconImage, and ContentPane
-    // MODIFIES: this
-    // EFFECTS: added a upper panel to the mainframe of light green color
+    // and IconImage.
     public void setMainFrameSettings() {
         this.setTitle("UBC Flora File");
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setSize(800, 500);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
-        ImageIcon logo = new ImageIcon("data/Images/AppLogo.png");
-        this.setIconImage(logo.getImage());
-        BackgroundImagePanel bg = new BackgroundImagePanel("data/Images/backgroundImage2.png");
-        this.setContentPane(bg);
-        // upperPanel();
-        // this.add(upperTile);
+        this.setIconImage(iconAppLogo.getImage());
+    }
 
+    // MODIFIES: this
+    // EFFECTS: adds BackgroundImagePanel object to background of this. Constructs
+    // and adds dashboard into
+    // background panel
+    public void initializeBackgroundPanel() {
+        BackgroundImagePanel bgPanel = new BackgroundImagePanel("data/Images/backgroundImage2.png");
+        bgPanel.setLayout(new BorderLayout());
+
+        dashboard = new DashboardPanel(plantsFolder);
+        bgPanel.add(dashboard, BorderLayout.CENTER);
+
+        this.setContentPane(bgPanel);
     }
 
     // EFFECTS: Loads Images and Icons for dialog boxes
@@ -88,17 +102,19 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         iconQuestion = scaleIcon("data/Images/DialogBox Logos/QuestionMark.png");
         iconError = scaleIcon("data/Images/DialogBox Logos/ErrorLogo.png");
         iconInfo = scaleIcon("data/Images/DialogBox Logos/Information.png");
-            
+        iconAppLogo = scaleIcon("data/Images/AppLogo.png");
+
     }
 
     // EFFECTS: Helper to scale the icons to 64x64
-    private ImageIcon scaleIcon(String path){
-        return new ImageIcon(new ImageIcon (path).getImage()
-        .getScaledInstance(64, 64, Image.SCALE_SMOOTH));
+    private ImageIcon scaleIcon(String path) {
+        return new ImageIcon(new ImageIcon(path).getImage()
+                .getScaledInstance(64, 64, Image.SCALE_SMOOTH));
     }
 
-    // EFFECTS: Sets up the UI Manager to use CrossPlatform settings and exceutes functions
-    //          to initialize the style of Dialog boxes, MenuBar, and MenuItems
+    // EFFECTS: Sets up the UI Manager to use CrossPlatform settings and exceutes
+    // functions
+    // to initialize the style of Dialog boxes, MenuBar, and MenuItems
     private void initLookAndFeel() {
         try {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
@@ -111,6 +127,8 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: added a upper panel to the mainframe of light green color
     public void upperPanel() {
         upperPanelLabel();
         upperTile = new JPanel();
@@ -153,7 +171,7 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     }
 
     // EFFECT: Helper to reduce repetition when adding new menu Items
-    private JMenuItem createCustomMenuItem (String text, ActionListener action) {
+    private JMenuItem createCustomMenuItem(String text, ActionListener action) {
         JMenuItem item = new JMenuItem(text);
         item.setOpaque(true);
         item.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -163,11 +181,12 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
     // Referenced from the JsonSerialization Demo
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
-    // MODIFIES: this
+    // MODIFIES: this, dashboard
     // EFFECTS: loads Folder from file
     public void loadFolder() {
         try {
             plantsFolder = jsonReader.read();
+            dashboard.setPlantsFolder(plantsFolder);
 
             JOptionPane.showMessageDialog(this, "Successfully loaded your catalog to:\n" + JSON_STORE,
                     "Load Successful",
@@ -189,6 +208,7 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     // EFFECTS: saves the Folder to file
     public void saveFolder() {
         try {
+            this.plantsFolder = dashboard.getPlantsFolder();
             jsonWriter.open();
             jsonWriter.write(plantsFolder);
             jsonWriter.close();

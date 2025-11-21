@@ -1,26 +1,18 @@
 {"folder": [
     {
         "commonName": "Red Rose",
-        "speciesName": "Rosa",
-        "observations": "No Details",
-        "ubcLocation": "University Blvd",
+        "speciesName": "Rosaline",
+        "observations": "Thorny Ouch!",
+        "ubcLocation": "Main Mall",
         "plantId": 1,
-        "dateFormatted": "12-11-2025 01:17:38"
+        "dateFormatted": "21-11-2025 14:02:27"
     },
     {
-        "commonName": "Sunflower",
-        "speciesName": "No Details",
-        "observations": "No Details",
-        "ubcLocation": "No Details",
-        "plantId": 2,
-        "dateFormatted": "12-11-2025 01:19:04"
-    },
-    {
-        "commonName": "lavendar",
-        "speciesName": "No Details",
-        "observations": "No Details",
-        "ubcLocation": "No Details",
+        "commonName": "Blackberry",
+        "speciesName": "",
+        "observations": "Invasive!",
+        "ubcLocation": "University Blvd",
         "plantId": 3,
-        "dateFormatted": "12-11-2025 01:19:21"
+        "dateFormatted": "21-11-2025 14:35:05"
     }
 ]}

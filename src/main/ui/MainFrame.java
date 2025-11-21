@@ -81,12 +81,19 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
         this.setIconImage(iconAppLogo.getImage());
+        handleClose();
     }
 
     // MODIFIES: this
     // EFFECTS: asks user if they want to save before exiting
     public void handleClose() {
-        
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                // Call your existing exit logic
+                exitApp();
+            }
+        });
     }
 
     // MODIFIES: this
@@ -253,6 +260,7 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         switch (chosenOption) {
             case JOptionPane.YES_OPTION:
                 saveFolder();
+                System.exit(0);
                 break;
             case JOptionPane.NO_OPTION:
                 System.exit(0);

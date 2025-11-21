@@ -26,18 +26,28 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     private ImageIcon iconInfo = new ImageIcon(new ImageIcon("data/Images/DialogBox Logos/Information.png").getImage()
             .getScaledInstance(64, 64, Image.SCALE_SMOOTH));
 
+    private Color woodColor = new Color(233, 175, 108);
+    private Color darkWood = new Color(91, 50, 16);
+    private Color darkBrownText = new Color(68, 35, 20);
+    private Color hoverColor = new Color(216, 66, 39);
+    private Color hoverTextColor = Color.WHITE;
+    private Font pixelFont = new Font("Dialog", Font.BOLD, 14);
+
     // EFFECTS: creates new JFrame this, sets title, sets exit behavior,
     // sets this dimensions, centers this, adds custom logo to this,
     // sets background colour to custom white colour
     public MainFrame() {
         try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+            
+            setMainFrameSettings();
+            stylizeMenuBar();
+            stylizeDialogueBoxes();
+
             jsonWriter = new JsonWriter(PersistenceInterface.JSON_STORE);
             jsonReader = new JsonReader(PersistenceInterface.JSON_STORE);
 
-            setMainFrameSettings();
-
             menuBar = new JMenuBar();
-            stylizeDialogueBoxes();
             initializeMenuBar();
             this.setJMenuBar(menuBar);
 
@@ -188,23 +198,39 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
     // MODIFIES: JOptionPane
     // EFFECT: changes JOptionPane settings to be a consistent style
-    public void stylizeDialogueBoxes(){
-    Color woodColor = new Color(233, 175, 108);
-    Color darkBrown = new Color(68, 35, 20);
-    Font pixelFont = new Font("Dialog", Font.BOLD, 16); 
+    public void stylizeDialogueBoxes() {
+        Font pixelFontBiggerSize = new Font("Dialog", Font.BOLD, 16);
 
-    UIManager.put("OptionPane.background", woodColor);
-    UIManager.put("Panel.background", woodColor); 
-    
-    UIManager.put("OptionPane.messageForeground", darkBrown);
-    UIManager.put("OptionPane.messageFont", pixelFont);
-    UIManager.put("Button.background", Color.WHITE);
+        UIManager.put("OptionPane.background", woodColor);
+        UIManager.put("Panel.background", woodColor);
+
+        UIManager.put("OptionPane.messageForeground", darkBrownText);
+        UIManager.put("OptionPane.messageFont", pixelFontBiggerSize);
+        UIManager.put("Button.background", Color.WHITE);
     }
 
-    // MODIFIES: JMenuBar
+    // MODIFIES: JMenuBar, JMenu, and JMenuItem
     // EFFECT: changes JMenuBar settings to be a consistent style
     public void stylizeMenuBar() {
-        
+
+        UIManager.put("MenuBar.background", woodColor);
+        UIManager.put("MenuBar.border", BorderFactory.createMatteBorder(0, 0, 2, 0, darkWood));
+
+        UIManager.put("Menu.background", woodColor);
+        UIManager.put("Menu.foreground", darkBrownText);
+        UIManager.put("Menu.font", pixelFont);
+        UIManager.put("Menu.selectionBackground", hoverColor);
+        UIManager.put("Menu.selectionForeground", hoverTextColor);
+        UIManager.put("Menu.borderPainted", false);
+
+        UIManager.put("MenuItem.background", woodColor);
+        UIManager.put("MenuItem.foreground", darkBrownText);
+        UIManager.put("MenuItem.font", pixelFont);
+        UIManager.put("MenuItem.selectionBackground", hoverColor);
+        UIManager.put("MenuItem.selectionForeground", hoverTextColor);
+        UIManager.put("MenuItem.borderPainted", false);
+
+        UIManager.put("PopupMenu.border", BorderFactory.createLineBorder(darkWood, 3));
     }
 
 }

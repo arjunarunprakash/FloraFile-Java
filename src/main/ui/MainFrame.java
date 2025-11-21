@@ -132,26 +132,21 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     // MODIFIES: this
     // EFFECTS: creates menubar on top of frame to allow user to save and load files
     public void initializeMenuBar() {
+        // new JMenuBar Object
         menuBar = new JMenuBar();
         menuBar.setOpaque(true);
 
+        // new JMenu Object with stylized borders
         JMenu file = new JMenu("File");
         file.setOpaque(true);
         file.setBorder(new EmptyBorder(5, 15, 5, 15));
 
-        JMenuItem saveFile = new JMenuItem("Save Progress");
-        JMenuItem loadFile = new JMenuItem("Load Progress");
-        JMenuItem Exit = new JMenuItem("Save and Exit");
-
         menuBar.add(file);
 
-        file.add(saveFile);
-        file.add(loadFile);
-        file.add(Exit);
-
-        saveFile.addActionListener(e -> saveFolder());
-        loadFile.addActionListener(e -> loadFolder());
-        Exit.addActionListener(e -> exitApp());
+        // create and setup all JMenuItem Objects
+        file.add(createCustomMenuItem("Save Progress", e -> saveFolder()));
+        file.add(createCustomMenuItem("Load Progress", e -> loadFolder()));
+        file.add(createCustomMenuItem("Save and Exit", e -> exitApp()));
 
         this.setJMenuBar(menuBar);
 
@@ -159,7 +154,11 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
     // EFFECT: Helper to reduce repetition when adding new menu Items
     private JMenuItem createCustomMenuItem (String text, ActionListener action) {
-        return null;
+        JMenuItem item = new JMenuItem(text);
+        item.setOpaque(true);
+        item.setBorder(new EmptyBorder(10, 10, 10, 10));
+        item.addActionListener(action);
+        return item;
     }
 
     // Referenced from the JsonSerialization Demo

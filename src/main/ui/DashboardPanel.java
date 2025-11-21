@@ -3,6 +3,7 @@ package ui;
 import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 import model.Folder;
 
@@ -37,21 +38,24 @@ public class DashboardPanel extends JPanel {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes settings of panel to ensure the background image can be seen
+    // EFFECTS: initializes and styles settings of container panel to ensure the background image can be seen
     public void initializeSettings() {
-
+        this.setLayout(new GridLayout(1, 2, 20, 20)); 
+        this.setBorder(new EmptyBorder(30, 30, 30, 30)); 
+        this.setOpaque(false); 
     }
 
     // MODIFIES: this
     // EFFECTS: add a left and right panel to current panel
     public void initializeLayout() {
-
+        this.add(createLeftPanel());
+        this.add(createRightPanel());
     }
 
     // MODIFIES: this
     // EFFECTS: specifies and creates the left panel, passed in initialize layout
-    public void createLeftPanel(){
-
+    public JPanel createLeftPanel(){
+        return null;
     }
 
     // MODIFIES: this
@@ -84,6 +88,10 @@ public class DashboardPanel extends JPanel {
     //          can be used after new entry is added or after file has been loaded
     public void refreshList(){
 
+    }
+
+    public JPanel createRightPanel() {
+        return null;
     }
 
 

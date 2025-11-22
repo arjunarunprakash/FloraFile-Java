@@ -192,6 +192,12 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         return item;
     }
 
+    // EFFECT: Ask user if they would like loadFolder when application starts
+    public void loadFolderOnStartup() {
+        
+    }
+
+
     // Referenced from the JsonSerialization Demo
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // MODIFIES: this, dashboard
@@ -244,9 +250,6 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         }
     }
 
-    // Referenced from the JsonSerialization Demo
-    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
-    // MODIFIES: this
     // EFFECTS: gives user option to save application, then exits
     public void exitApp() {
         int chosenOption = JOptionPane.showConfirmDialog(

@@ -6,8 +6,9 @@ import javax.swing.*;
 // A simple splash screen showing the user the app logo before entering app
 public class SplashScreen extends JWindow {
 
-    private int timer;
-    private JLabel label;
+    private Timer timer;
+    private JLabel logoLabel;
+    private JLabel textLabel;
 
     // EFFECTS: Constructor, creates instance of SplashScreen
     public SplashScreen() {
@@ -36,30 +37,60 @@ public class SplashScreen extends JWindow {
 
     // MODIFIES: this
     // EFFECTS: moves logo upwards until it hits y = 60
-    public void startAnimation() {
+    private void startAnimation() {
+        timer = new Timer(20, e -> {
+            int currentY = logoLabel.getY();
+            int targetY = 60; // Stop higher up to leave room for text
 
+            if (currentY > targetY) {
+                logoLabel.setLocation(logoLabel.getX(), currentY - 2);
+            } else {
+                // Pause for a moment so user can read text, then close
+                timer.stop();
+                closeAfterDelay();
+            }
+        });
+        timer.start();
     }
 
     // MODIFIES: this
     // EFFECTS: adds text label to panel
     public void addTextLabel(JPanel c) {
-
+        String text = "Welcome to UBC FloraFile! \n We will set you up in just a sec!";
+        textLabel = new JLabel(text);
+        textLabel.setFont(new Font("Dialog", Font.BOLD, 16));
+        textLabel.setForeground(new Color(68, 35, 20)); 
+        textLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        textLabel.setBounds(0, 220, 450, 60); 
+        c.add(textLabel);
     }
 
     // MODIFIES: this
     // EFFECTS: adds logo label to panel
     public void addLogoLabel(JPanel c) {
-
+        ImageIcon icon = new ImageIcon("data/Images/AppLogo.png");
+        Image img = icon.getImage().getScaledInstance(140, 140, Image.SCALE_SMOOTH);
+        logoLabel = new JLabel(new ImageIcon(img));
+        
+        logoLabel.setBounds(155, 180, 140, 140); 
+        c.add(logoLabel);
     }
 
     // MODIFIES: this
     // EFFECTS: ends animation and closes window
-    public void close() {
-
+    private void closeAfterDelay() {
+        Timer pause = new Timer(1000, e -> {
+            dispose();
+            new MainFrame();
+        });
+        pause.setRepeats(false);
+        pause.start();
     }
+}
 
 
 
     
 
-}
+

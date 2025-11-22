@@ -194,7 +194,22 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
     // EFFECT: Ask user if they would like loadFolder when application starts
     public void loadFolderOnStartup() {
-        
+        int chosenOption = JOptionPane.showConfirmDialog(
+                this,
+                "Would you like to load your last save?",
+                "Welcome Back!",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                iconQuestion);
+
+        switch (chosenOption) {
+            case JOptionPane.YES_OPTION:
+                loadFolder();
+                break;
+            case JOptionPane.NO_OPTION:
+                // do nothing, close dialog box
+                break;
+        }
     }
 
 

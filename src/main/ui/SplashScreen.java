@@ -6,40 +6,60 @@ import javax.swing.*;
 // A simple splash screen showing the user the app logo before entering app
 public class SplashScreen extends JWindow {
 
-    private int duration;
+    private int timer;
+    private JLabel label;
 
-    // EFFECTS: Constructs splashscreen instance that lasts for specified duration
-    public SplashScreen(int duration) {
-        this.duration = duration;
+    // EFFECTS: Constructor, creates instance of SplashScreen
+    public SplashScreen() {
     }
-    
-    // EFFECTS: sets up JPanel for window then displays Image for specified duration
+
+    // EFFECTS: sets up JWindow by configuring settings then excutes startAnimation
     public void displaySplash() {
-         JPanel content = (JPanel) getContentPane();
-        content.setBackground(Color.white);
+        JPanel content = (JPanel) getContentPane();
+        content.setBackground(new Color(233, 175, 108)); 
+        content.setLayout(null);
 
-        int width = 450;
-        int height = 300;
+        // 1. Setup Window
+        int w = 450;
+        int h = 300;
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (screen.width - width) / 2;
-        int y = (screen.height - height) / 2;
-        setBounds(x, y, width, height);
+        setBounds((screen.width - w) / 2, (screen.height - h) / 2, w, h);
 
-        JLabel label = new JLabel(new ImageIcon(new ImageIcon("data/Images/AppLogo.png").getImage()
-                .getScaledInstance(450, 300, Image.SCALE_SMOOTH)));
-        content.add(label, BorderLayout.CENTER);
+        
+        addTextLabel(content);
+
+        addLogoLabel(content);
 
         setVisible(true);
-        
-        try { 
-            Thread.sleep(duration); 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        setVisible(false);
-        dispose();
+        startAnimation();
     }
 
+    // MODIFIES: this
+    // EFFECTS: moves logo upwards until it hits y = 60
+    public void startAnimation() {
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds text label to panel
+    public void addTextLabel(JPanel c) {
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds logo label to panel
+    public void addLogoLabel(JPanel c) {
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: ends animation and closes window
+    public void close() {
+
+    }
+
+
+
     
+
 }

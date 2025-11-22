@@ -64,6 +64,7 @@ public class MainFrame extends JFrame implements PersistenceInterface {
             jsonReader = new JsonReader(PersistenceInterface.JSON_STORE);
 
             this.setVisible(true);
+            loadFolderOnStartup();
         } catch (Exception e) {
             System.out.println("MainFrame error");
         }

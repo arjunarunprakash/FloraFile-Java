@@ -8,13 +8,7 @@ import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 public class Main {
     public static void main(String[] args) {
         try {
-            SplashScreen splash = new SplashScreen();
-            splash.displaySplash();
-
-            SwingUtilities.invokeLater(() -> {
-                new MainFrame();
-            });
-
+             new SplashScreen().displaySplash();
         } catch (Exception e) {
             System.out.println("Main function error" + e.getMessage());
         }

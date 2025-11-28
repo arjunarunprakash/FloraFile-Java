@@ -139,7 +139,6 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
     }
 
-
     // MODIFIES: this
     // EFFECTS: creates menubar on top of frame to allow user to save and load files
     public void initializeMenuBar() {
@@ -191,7 +190,6 @@ public class MainFrame extends JFrame implements PersistenceInterface {
                 break;
         }
     }
-
 
     // Referenced from the JsonSerialization Demo
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
@@ -277,7 +275,7 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     public void printLog() {
         EventLog el = EventLog.getInstance();
         for (Event next : el) {
-             System.out.println(next.toString() + "\n\n");
+            System.out.println(next.toString() + "\n\n");
         }
     }
 

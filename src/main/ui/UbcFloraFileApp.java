@@ -121,7 +121,8 @@ public class UbcFloraFileApp implements PersistenceInterface {
                     "-----You have " + "[" + cabinetFolder.folderSize() + "]" + " entries in your folder!-----");
 
             for (Plant entry : cabinetFolder.getFolder()) {
-                System.out.println("\t( " + entry.getPlantId() + " ) " + " " + entry.getFormattedDateTime() + " " + entry.getCommonName());
+                System.out.println("\t( " + entry.getPlantId() + " ) " + " " + entry.getFormattedDateTime() + " "
+                        + entry.getCommonName());
             }
             deleteOrEditMessage();
             String entry = userInput.next();

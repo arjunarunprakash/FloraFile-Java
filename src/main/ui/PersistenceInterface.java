@@ -22,5 +22,4 @@ public interface PersistenceInterface {
     // EFFECTS: gives user to save application, then exits
     void exitApp();
 
-
 }

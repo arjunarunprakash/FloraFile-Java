@@ -17,7 +17,7 @@ public class SplashScreen extends JWindow {
     // EFFECTS: sets up JWindow by configuring settings then excutes startAnimation
     public void displaySplash() {
         JPanel content = (JPanel) getContentPane();
-        content.setBackground(new Color(233, 175, 108)); 
+        content.setBackground(new Color(233, 175, 108));
         content.setLayout(null);
 
         int w = 450;
@@ -25,7 +25,6 @@ public class SplashScreen extends JWindow {
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screen.width - w) / 2, (screen.height - h) / 2, w, h);
 
-        
         addTextLabel(content);
 
         addLogoLabel(content);
@@ -39,7 +38,7 @@ public class SplashScreen extends JWindow {
     private void startAnimation() {
         timer = new Timer(20, e -> {
             int currentY = logoLabel.getY();
-            int targetY = 60; 
+            int targetY = 60;
 
             if (currentY > targetY) {
                 logoLabel.setLocation(logoLabel.getX(), currentY - 2);
@@ -57,10 +56,10 @@ public class SplashScreen extends JWindow {
         String text = "Welcome to UBC FloraFile! \n We will set you up in just a sec!";
         textLabel = new JLabel(text);
         textLabel.setFont(new Font("Dialog", Font.BOLD, 16));
-        textLabel.setForeground(new Color(68, 35, 20)); 
+        textLabel.setForeground(new Color(68, 35, 20));
         textLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        
-        textLabel.setBounds(0, 220, 450, 60); 
+
+        textLabel.setBounds(0, 220, 450, 60);
         c.add(textLabel);
     }
 
@@ -70,8 +69,8 @@ public class SplashScreen extends JWindow {
         ImageIcon icon = new ImageIcon("data/Images/AppLogo.png");
         Image img = icon.getImage().getScaledInstance(140, 140, Image.SCALE_SMOOTH);
         logoLabel = new JLabel(new ImageIcon(img));
-        
-        logoLabel.setBounds(155, 180, 140, 140); 
+
+        logoLabel.setBounds(155, 180, 140, 140);
         c.add(logoLabel);
     }
 
@@ -86,9 +85,3 @@ public class SplashScreen extends JWindow {
         pause.start();
     }
 }
-
-
-
-    
-
-

@@ -282,10 +282,9 @@ public class DashboardPanel extends JPanel {
         p.setSpeciesName(species.getText());
         p.setUbcLocation(location.getSelectedIndex() + 1);
         p.setObservations(observerations.getText());
-        
+
         refreshList();
         JOptionPane.showMessageDialog(this, "Entry Updated!");
-
 
     }
 

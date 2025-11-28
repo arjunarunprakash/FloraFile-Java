@@ -11,7 +11,7 @@ public class BackgroundImagePanel extends JPanel {
 
     private Image backgroundImage;
 
-    //EFFECTS: sets backgroundImage to specified image location
+    // EFFECTS: sets backgroundImage to specified image location
     public BackgroundImagePanel(String bg) {
         backgroundImage = new ImageIcon(bg).getImage();
     }
@@ -23,6 +23,5 @@ public class BackgroundImagePanel extends JPanel {
         super.paintComponent(g);
         g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
     }
-    
 
 }

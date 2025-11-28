@@ -13,10 +13,10 @@ public class Plant implements Writable {
     private String commonName; // common name of plant
     private String speciesName; // species name of plant
     private String ubcLocation; // Location of plant on UBC
-    private LocalDateTime dateAdded; 
+    private LocalDateTime dateAdded;
     private String dateFormatted; // Listed date found dd-MM-yyyy HH:mm:ss format
     private String observation; // Observations
-    private static int entryCounter = 0; //Counts total number of entries in application
+    private static int entryCounter = 0; // Counts total number of entries in application
     private int plantId;
     private String noDetail = "No Details";
 
@@ -42,7 +42,7 @@ public class Plant implements Writable {
      * REQUIRES: name that has a non-zero length,
      * plantid is unique and valid parameter.
      * EFFECTS: constructs plant where all fields are manually set based on
-     * parameters; for persistence writing; 
+     * parameters; for persistence writing;
      * parses LocalDateTime from dateFormatted String
      */
     public Plant(String name, String dateF, String ubcL, String specName, String obs,
@@ -56,7 +56,7 @@ public class Plant implements Writable {
         this.plantId = plantId;
     }
 
-        /*
+    /*
      * REQUIRES: name that has a non-zero length
      * EFFECTS: creates a testable constructor
      * commonName is set to name; dateFound is set to date; plant id is
@@ -78,7 +78,8 @@ public class Plant implements Writable {
     /*
      * REQUIRES: name that has a non-zero length,
      * plantid is unique and valid parameter.
-     * EFFECTS: creates a testable constructor plant where all fields are manually set based on
+     * EFFECTS: creates a testable constructor plant where all fields are manually
+     * set based on
      * parameters
      */
     public Plant(String name, String dateF, String ubcL, String specName, String obs,
@@ -115,7 +116,8 @@ public class Plant implements Writable {
     /*
      * REQUIRES: name must have length greater than 0
      * MODIFIES: this
-     * EFFECTS: updates the common name of the plant to parameter, updates EventLog to reflect change
+     * EFFECTS: updates the common name of the plant to parameter, updates EventLog
+     * to reflect change
      */
     public String setCommonName(String name) {
         EventLog.getInstance().logEvent(new Event("Common name updated too: " + name));
@@ -125,7 +127,8 @@ public class Plant implements Writable {
     /*
      * REQUIRES: name must have length greater than 0
      * MODIFIES: this
-     * EFFECTS: updates the species name of the plant to parameter, updates EventLog to reflect change
+     * EFFECTS: updates the species name of the plant to parameter, updates EventLog
+     * to reflect change
      */
     public void setSpeciesName(String name) {
         this.speciesName = name;
@@ -135,7 +138,8 @@ public class Plant implements Writable {
     /*
      * REQUIRES: valid number option between 1-4
      * MODIFIES: this
-     * EFFECTS: updates the ubcLocation of the plant based on parameter, updates EventLog to reflect change
+     * EFFECTS: updates the ubcLocation of the plant based on parameter, updates
+     * EventLog to reflect change
      */
     public void setUbcLocation(int number) {
         switch (number) {
@@ -167,7 +171,8 @@ public class Plant implements Writable {
     /*
      * REQUIRES: observations must have length greater than 0
      * MODIFIES: this
-     * EFFECTS: updates the observations of the plant to parameter, updates EventLog to reflect change
+     * EFFECTS: updates the observations of the plant to parameter, updates EventLog
+     * to reflect change
      */
     public String setObservations(String observations) {
         EventLog.getInstance().logEvent(new Event("Observations updated too: " + observations));
@@ -197,7 +202,7 @@ public class Plant implements Writable {
     public static int getEntryCounter() {
         return entryCounter;
     }
-    
+
     // REQUIRES: positve integer as count
     // MODIFIES: this
     // EFFECT: sets the entryCounter static field variable to given integer
@@ -218,7 +223,8 @@ public class Plant implements Writable {
     }
 
     // MODIFIES: this
-    // EFFECT: Formats the LocalDateTime so that it looks better in dd-MM-YYYY HH-mm-ss
+    // EFFECT: Formats the LocalDateTime so that it looks better in dd-MM-YYYY
+    // HH-mm-ss
     public String formatDateTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         dateFormatted = dateAdded.format(formatter);

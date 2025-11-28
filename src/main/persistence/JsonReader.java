@@ -59,7 +59,8 @@ public class JsonReader {
     }
 
     // MODIFIES: folder
-    // EFFECTS: parses plant from JSON object and adds it to folder and updated entryCounter
+    // EFFECTS: parses plant from JSON object and adds it to folder and updated
+    // entryCounter
     private void addPlant(Folder f, JSONObject jsonObject) {
         String commonName = jsonObject.getString("commonName");
         String dateFormatted = jsonObject.getString("dateFormatted");

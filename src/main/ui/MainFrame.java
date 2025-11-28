@@ -270,6 +270,11 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
     }
 
+    // EFFECTS: helper for handle close that prints EventLog to console
+    public void printLog() {
+        
+    }
+
     // MODIFIES: JOptionPane
     // EFFECT: changes JOptionPane settings to be a consistent style
     public void stylizeDialogueBoxes() {

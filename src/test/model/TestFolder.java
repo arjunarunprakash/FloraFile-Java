@@ -186,6 +186,24 @@ public class TestFolder {
     }
 
     @Test
+    void testRemoveByPlantIdNonExistent() {
+        testFolder.addPlant(testPlant1);
+        testFolder.addPlant(testPlant2);
+        testFolder.addPlant(testPlant3);
+        assertEquals(1, testPlant1.getPlantId());
+        assertEquals(2, testPlant2.getPlantId());
+        assertEquals(3, testPlant3.getPlantId());
+        testFolder.removeByPlantId(0);
+        assertEquals(3, testFolder.folderSize());
+        assertEquals(testPlant1, testFolder.getPlant(0));
+        assertEquals(testPlant2, testFolder.getPlant(1));
+        assertEquals(testPlant3, testFolder.getPlant(2));
+        assertEquals(testPlant1, testFolder.getPlantByPlantId(1));
+        assertEquals(testPlant2, testFolder.getPlantByPlantId(2));
+        assertEquals(testPlant3, testFolder.getPlantByPlantId(3));
+    }
+
+    @Test
     void testRemoveByPlantId() {
         testFolder.addPlant(testPlant1);
         testFolder.addPlant(testPlant2);

@@ -27,6 +27,7 @@ public class Folder implements Writable {
      */
     public void addPlant(Plant p) {
         folder.add(p);
+        EventLog.getInstance().logEvent(new Event (p.getCommonName() + " has been added to Folder"));
     }
 
     /*
@@ -41,7 +42,7 @@ public class Folder implements Writable {
     /*
      * REQUIRES: a valid plant
      * MODIFIES: this
-     * EFFECTS: removes plant based on plant id
+     * EFFECTS: removes plant based on plant id, updated EventLog. If id does not exist do nothing
      */
     public void removeByPlantId(int id) {
         Plant suspect = null;
@@ -49,10 +50,12 @@ public class Folder implements Writable {
             if (p.getPlantId() == id) {
                 suspect = p;
             }
-
         }
-        this.folder.remove(suspect);
-    }
+        if (this.folder.contains(suspect)) {
+            EventLog.getInstance().logEvent(new Event (suspect.getCommonName() + " has been removed from Folder"));
+            this.folder.remove(suspect);
+        }
+        }
 
     /*
      * EFFECTS: checks if folder is empty
@@ -85,7 +88,7 @@ public class Folder implements Writable {
      */
     public void sortListByOldestToNewest() {
         folder.sort(Comparator.comparing(Plant::getDateTimeAdded));
-
+        EventLog.getInstance().logEvent(new Event ("Folder has been sorted Oldest To Newest based on Date"));
     }
 
     /*
@@ -95,6 +98,7 @@ public class Folder implements Writable {
      */
     public void sortListByNewestToOldest() {
         folder.sort(Comparator.comparing(Plant::getDateTimeAdded).reversed());
+        EventLog.getInstance().logEvent(new Event ("Folder has been sorted Newest to Oldest based on Date"));
 
     }
 
@@ -109,6 +113,7 @@ public class Folder implements Writable {
                 return Integer.valueOf(p1.getPlantId()).compareTo(p2.getPlantId());
             }
         });
+        EventLog.getInstance().logEvent(new Event ("Folder has been sorted in ascending order based on Plant ID"));
 
     }
 

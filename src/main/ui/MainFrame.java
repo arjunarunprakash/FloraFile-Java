@@ -91,7 +91,6 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                // Call your existing exit logic
                 exitApp();
             }
         });
@@ -141,25 +140,6 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
     }
 
-    // MODIFIES: this
-    // EFFECTS: added a upper panel to the mainframe of light green color
-    public void upperPanel() {
-        upperPanelLabel();
-        upperTile = new JPanel();
-        upperTile.setBackground(new Color(0xC3FDB8));
-        upperTile.setBounds(0, 0, 800, 62);
-        upperTile.add(label);
-
-    }
-
-    // MODIFIES: this
-    // EFFECTS: added pictures and text to the upperTile
-    public void upperPanelLabel() {
-        label = new JLabel("What will you file today?");
-        label.setForeground(new Color(30, 42, 86));
-        label.setFont(new Font("Brush Script MT", Font.ITALIC, 25));
-
-    }
 
     // MODIFIES: this
     // EFFECTS: creates menubar on top of frame to allow user to save and load files

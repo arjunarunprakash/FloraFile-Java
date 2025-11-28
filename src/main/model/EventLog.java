@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
+ * Referenced from the Alarm System
+ * https://github.students.cs.ubc.ca/CPSC210/AlarmSystem.git
+ * 
  * Represents a log of alarm system events.
  * We use the Singleton Design Pattern to ensure that there is only
  * one EventLog in the system and that the system has global access

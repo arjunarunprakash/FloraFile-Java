@@ -8,11 +8,19 @@
         "dateFormatted": "21-11-2025 14:02:27"
     },
     {
-        "commonName": "Blackberry",
-        "speciesName": "",
-        "observations": "Invasive!",
+        "commonName": "French Lavendar",
+        "speciesName": "Lavandula Denta",
+        "observations": "Smells nice and is a nice pastel purple in colour",
         "ubcLocation": "University Blvd",
-        "plantId": 3,
-        "dateFormatted": "21-11-2025 14:35:05"
+        "plantId": 4,
+        "dateFormatted": "28-11-2025 12:33:41"
+    },
+    {
+        "commonName": "Himalayan Blackberry",
+        "speciesName": "Rubus armeniacus",
+        "observations": "Sharp thorny branches. Around 5 Meters tall",
+        "ubcLocation": "East Mall",
+        "plantId": 5,
+        "dateFormatted": "28-11-2025 12:37:26"
     }
 ]}

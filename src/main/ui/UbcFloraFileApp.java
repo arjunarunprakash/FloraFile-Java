@@ -273,7 +273,7 @@ public class UbcFloraFileApp implements PersistenceInterface {
     // Referenced from the JsonSerialization Demo
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // EFFECTS: saves the Folder to file
-    private void saveFolder() {
+    public void saveFolder() {
         try {
             jsonWriter.open();
             jsonWriter.write(cabinetFolder);
@@ -289,7 +289,7 @@ public class UbcFloraFileApp implements PersistenceInterface {
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: loads Folder from file
-    private void loadFolder() {
+    public void loadFolder() {
         try {
             cabinetFolder = jsonReader.read();
             System.out.println("\n-----Sucessfully Loaded your saved catalog from " + JSON_STORE + " -----");
@@ -303,7 +303,7 @@ public class UbcFloraFileApp implements PersistenceInterface {
     // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     // MODIFIES: this
     // EFFECTS: gives user to save application, then exits
-    private void exitApp() {
+    public void exitApp() {
         System.out.println("\n Would you like to save your progress?");
         System.out.println("\t y -> yes, save progress");
         System.out.println("\t n -> no, exit now");

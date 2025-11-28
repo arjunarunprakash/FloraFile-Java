@@ -20,7 +20,6 @@ public class SplashScreen extends JWindow {
         content.setBackground(new Color(233, 175, 108)); 
         content.setLayout(null);
 
-        // 1. Setup Window
         int w = 450;
         int h = 300;
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -40,12 +39,11 @@ public class SplashScreen extends JWindow {
     private void startAnimation() {
         timer = new Timer(20, e -> {
             int currentY = logoLabel.getY();
-            int targetY = 60; // Stop higher up to leave room for text
+            int targetY = 60; 
 
             if (currentY > targetY) {
                 logoLabel.setLocation(logoLabel.getX(), currentY - 2);
             } else {
-                // Pause for a moment so user can read text, then close
                 timer.stop();
                 closeAfterDelay();
             }

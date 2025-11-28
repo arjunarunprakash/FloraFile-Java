@@ -266,6 +266,7 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: gives user option to save application, then exits
     public void exitApp() {
         int chosenOption = JOptionPane.showConfirmDialog(

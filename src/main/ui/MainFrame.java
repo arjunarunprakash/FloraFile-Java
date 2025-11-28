@@ -21,8 +21,6 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     private JsonReader jsonReader;
     private Folder plantsFolder = new Folder();
 
-    private JPanel upperTile;
-    private JLabel label;
     private JMenuBar menuBar;
     private DashboardPanel dashboard;
 

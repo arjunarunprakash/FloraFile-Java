@@ -26,7 +26,6 @@ public class DashboardPanel extends JPanel {
     // Colours and font
     private final Color woodColor = new Color(233, 175, 108);
     private final Color darkWood = new Color(91, 50, 16);
-    private final Font pixelFont = new Font("Dialog", Font.BOLD, 14);
     private ImageIcon iconAdd;
 
     // EFFECTS: constructor to initialize panels and fields

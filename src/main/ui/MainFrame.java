@@ -9,7 +9,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-import model.Folder;
+import model.*;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -245,7 +246,7 @@ public class MainFrame extends JFrame implements PersistenceInterface {
     }
 
     // MODIFIES: this
-    // EFFECTS: gives user option to save application, then exits
+    // EFFECTS: gives user option to save application, upon exit prints Event Log
     public void exitApp() {
         int chosenOption = JOptionPane.showConfirmDialog(
                 this,
@@ -258,9 +259,11 @@ public class MainFrame extends JFrame implements PersistenceInterface {
         switch (chosenOption) {
             case JOptionPane.YES_OPTION:
                 saveFolder();
+                printLog();
                 System.exit(0);
                 break;
             case JOptionPane.NO_OPTION:
+                printLog();
                 System.exit(0);
                 break;
             case JOptionPane.CANCEL_OPTION:
@@ -272,7 +275,10 @@ public class MainFrame extends JFrame implements PersistenceInterface {
 
     // EFFECTS: helper for handle close that prints EventLog to console
     public void printLog() {
-        
+        EventLog el = EventLog.getInstance();
+        for (Event next : el) {
+             System.out.println(next.toString() + "\n\n");
+        }
     }
 
     // MODIFIES: JOptionPane

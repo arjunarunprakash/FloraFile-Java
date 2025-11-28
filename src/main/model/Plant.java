@@ -115,25 +115,27 @@ public class Plant implements Writable {
     /*
      * REQUIRES: name must have length greater than 0
      * MODIFIES: this
-     * EFFECTS: common name of the plant in this entry
+     * EFFECTS: updates the common name of the plant to parameter, updates EventLog to reflect change
      */
     public String setCommonName(String name) {
+        EventLog.getInstance().logEvent(new Event("Common name updated too: " + name));
         return this.commonName = name;
     }
 
     /*
      * REQUIRES: name must have length greater than 0
      * MODIFIES: this
-     * EFFECTS: species name of the plant in this entry
+     * EFFECTS: updates the species name of the plant to parameter, updates EventLog to reflect change
      */
     public void setSpeciesName(String name) {
         this.speciesName = name;
+        EventLog.getInstance().logEvent(new Event("Species name updated too: " + name));
     }
 
     /*
      * REQUIRES: valid number option between 1-4
      * MODIFIES: this
-     * EFFECTS: ubcLocation of the plant in this entry
+     * EFFECTS: updates the ubcLocation of the plant based on parameter, updates EventLog to reflect change
      */
     public void setUbcLocation(int number) {
         switch (number) {
@@ -158,14 +160,17 @@ public class Plant implements Writable {
                 break;
         }
 
+        EventLog.getInstance().logEvent(new Event("Location updated too: " + this.ubcLocation));
+
     }
 
     /*
      * REQUIRES: observations must have length greater than 0
      * MODIFIES: this
-     * EFFECTS: common name of the plant in this entry
+     * EFFECTS: updates the observations of the plant to parameter, updates EventLog to reflect change
      */
     public String setObservations(String observations) {
+        EventLog.getInstance().logEvent(new Event("Observations updated too: " + observations));
         return this.observation = observations;
 
     }

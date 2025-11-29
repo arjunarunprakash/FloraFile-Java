@@ -21,7 +21,7 @@ public class JsonTest {
         assertEquals(speciesName, plant.getSpeciesName());
         assertEquals(observation, plant.getObservations());
         assertEquals(plantId, plant.getPlantId());
-        assertEquals(LocalDateTime.parse(dateFormatted, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")), 
-        plant.getDateTimeAdded());
+        assertEquals(LocalDateTime.parse(dateFormatted, DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")),
+                plant.getDateTimeAdded());
     }
 }

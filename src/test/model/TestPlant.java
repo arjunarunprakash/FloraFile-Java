@@ -23,10 +23,11 @@ public class TestPlant {
 
     @BeforeEach
     void runBefore() {
-        
+
         Plant.resetPlantIDCount();
         testPlant = new Plant("Meadow Foxtail", fixedClock);
-        testOverLoadedPlant = new Plant("Red Rose","25-12-2025 12:00:00", "Main Mall", "Rosa", "vibrant red", 2, fixedClock);
+        testOverLoadedPlant = new Plant("Red Rose",
+                "25-12-2025 12:00:00", "Main Mall", "Rosa", "vibrant red", 2, fixedClock);
     }
 
     @Test
@@ -102,5 +103,4 @@ public class TestPlant {
         assertEquals(43, updatedTestPlant.getPlantId());
     }
 
-  
 }

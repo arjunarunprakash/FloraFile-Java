@@ -203,6 +203,7 @@ public class DashboardPanel extends JPanel {
                     int id = Integer.parseInt(val.substring(1, val.indexOf(")")));
                     popUpDetails(plantsFolder.getPlantByPlantId(id));
                 } catch (Exception ex) {
+                    System.out.println("Handle Selection error" + ex.getMessage());
                 }
                 plantList.clearSelection();
             }
@@ -223,17 +224,19 @@ public class DashboardPanel extends JPanel {
         if (p == null) {
             return;
         }
-        String msg = "Name: " + p.getCommonName() + "\nSpecies: " + p.getSpeciesName() +
-                "\nLocation: " + p.getUbcLocation() + "\nObs: " + p.getObservations();
+        String msg = "Name: " + p.getCommonName() + "\nSpecies: " + p.getSpeciesName()
+                + "\nLocation: " + p.getUbcLocation() + "\nObs: " + p.getObservations();
 
         Object[] options = { "Edit", "Delete", "Close" };
         int choice = JOptionPane.showOptionDialog(this, msg, "Entry Details",
                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
-        if (choice == 0)
+        if (choice == 0) {
             popUpEditDialog(p);
-        else if (choice == 1)
+        } else if (choice == 1) {
+
             deletePlant(p);
+        }
     }
 
     // EFFECTS: deletes plant from plantFolder, refreshes list
@@ -253,25 +256,26 @@ public class DashboardPanel extends JPanel {
                 new String[] { "1. Main Mall", "2. University Blvd", "3. West Mall", "4. East Mall" });
 
         String curLoc = p.getUbcLocation();
-        if (curLoc.contains("Univ"))
+        if (curLoc.contains("Univ")) {
             location.setSelectedIndex(1);
-        else if (curLoc.contains("West"))
+        } else if (curLoc.contains("West")) {
             location.setSelectedIndex(2);
-        else if (curLoc.contains("East"))
+        } else if (curLoc.contains("East")) {
             location.setSelectedIndex(3);
-        else
+        } else {
             location.setSelectedIndex(0);
 
-        JPanel panel = new JPanel(new GridLayout(0, 1));
-        panel.setPreferredSize(new Dimension(300, 250));
-        addFieldsToForm(panel, name, species, location, obs);
+            JPanel panel = new JPanel(new GridLayout(0, 1));
+            panel.setPreferredSize(new Dimension(300, 250));
+            addFieldsToForm(panel, name, species, location, obs);
 
-        int res = JOptionPane.showConfirmDialog(this, panel, "Edit Entry",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            int res = JOptionPane.showConfirmDialog(this, panel, "Edit Entry",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
-        if (res == JOptionPane.OK_OPTION)
-            updatePlant(p, name, species, location, obs);
-
+            if (res == JOptionPane.OK_OPTION) {
+                updatePlant(p, name, species, location, obs);
+            }
+        }
     }
 
     // EFFECTS: passed by popUpEditDialog to update the plant values based on user

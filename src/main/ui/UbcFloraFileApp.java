@@ -83,7 +83,6 @@ public class UbcFloraFileApp implements PersistenceInterface {
                 break;
             default:
                 System.out.println("Please enter valid number");
-                break;
         }
     }
 

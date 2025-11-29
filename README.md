@@ -96,3 +96,9 @@ Observations updated too: Sharp thorny branches. Around 5 Meters tall
 
 Fri Nov 28 12:37:26 PST 2025
 Himalayan Blackberry has been added to Folder
+
+# Phase 4: Task 3
+
+If I had more time, I would refactor the design to reduce the high coupling caused by the UI classes' heavy dependence on my concrete Model classes. Currently, my design relies heavily on dependencies where MainFrame and DashboardPanel directly instantiate or access the internal methods of Folder and Plant. For example, the DashboardPanel reads text fields and directly constructs new Plant objects, and MainFrame instantiates specific JsonWriter objects within its logic. I read that my use of dependencies (objects that are local variables and/or parameters) keeps the memory footprint low compared to permanent associations, but it's obvious that my UI is tightly coupled to the specific implementation of the Model because of this. If I were to change the constructor of Plant or the structure of Folder, I would have to hunt down and fix code inside MainFrame, DashboardPanel, and UbcFloraFileApp all over again to work with their own specific implementation.
+
+To improve this, I would introduce a new abstract class that can control and separate the UI and model class better. Instead of the UI classes depending directly on the Model to create or save data, the UI would simply hold an association to the Controller. The UI would pass user inputs to the Controller, and the Controller would handle the logic of instantiating Plant objects or calling the JsonWriter. This refactoring would convert the scattered dependencies into a single, clean association, making the code more modular, easier to test, and significantly easier to maintain if the Model logic changes in the future.
